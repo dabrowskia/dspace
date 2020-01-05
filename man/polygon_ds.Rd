@@ -4,8 +4,18 @@
 \alias{polygon_ds}
 \title{polygon_ds}
 \usage{
-polygon_ds(x, k = 2, queen = T, data = 2:ncol(x), method = "euclidean",
-  style = "B", disjoint = F, n.neigh = 8, plot = T, accuracy = T)
+polygon_ds(
+  x,
+  k = 2,
+  queen = T,
+  data = 2:ncol(x),
+  method = "euclidean",
+  style = "B",
+  disjoint = F,
+  n.neigh = 8,
+  plot = T,
+  accuracy = T
+)
 }
 \arguments{
 \item{x}{point or polygon shapefile data;}

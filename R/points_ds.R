@@ -30,6 +30,19 @@
 #'
 #'@return vector of numbers representing regions to whicheach element
 #'@export
+#'@import geosphere
+#'@import spgwr
+#'@import dplyr
+#'@import raster
+#'@import sf
+#'@import igraph
+#'@import spdep
+#'@import rgdal
+#'@import reshape2
+#'@import geosphere
+#'@import tmap
+#'@import ggplot2
+#'@import caret
 #'
 points_ds<-function(x,k=2,queen=T,data=2:ncol(x),
                     method = "euclidean",style="B",
