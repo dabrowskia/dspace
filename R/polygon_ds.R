@@ -38,25 +38,44 @@
 #'  world$class<-polygon_ds(world,data=c(9,10),k=7,style="B",disjoint = T,plot=T,n.neigh = 6)
 #'  qtm(world,"class")
 
-polygon_ds<-function(x,k=2,queen=T,data=2:ncol(x),
-              method = "euclidean",style="B",
-              disjoint=F,n.neigh=8,plot=T,accuracy=T)
+polygon_ds <- function(x,
+                       k = 2,
+                       queen = T,
+                       data = 2:ncol(x),
+                       method = "euclidean",
+                       style = "B",
+                       disjoint = F,
+                       n.neigh = 8,
+                       plot = T,
+                       accuracy = T)
 {
-  res<-prepare_polygons(x=x,queen=queen,
-                   method=method,
-                   disjoint=disjoint,
-                   n.neigh=n.neigh,plot=plot)
+  res <- prepare_polygons(
+    x = x,
+    queen = queen,
+    method = method,
+    disjoint = disjoint,
+    n.neigh = n.neigh,
+    plot = plot
+  )
 
-  fg.graph<-build_graph(x=res[["x"]],x.nb=res[["x.nb"]],data=data,method=method,
-                     style=style)
+  fg.graph <-
+    build_graph(
+      x = res[["x"]],
+      x.nb = res[["x.nb"]],
+      data = data,
+      method = method,
+      style = style
+    )
 
-  classes<-part_communities(fg=fg.graph[["fg"]],k=k)
-  if(accuracy==T)
+  classes <- part_communities(fg = fg.graph[["fg"]], k = k)
+  if (accuracy == T)
   {
-    data.to.accu<-res[["x"]]@data %>% dplyr::select(data) %>% mutate(class=classes)
-    accu<-accuracy_ds(x=data.to.accu)
-    print(paste("Accuracy:",accu ))
+    data.to.accu <-
+      res[["x"]]@data %>%
+      dplyr::select(data) %>%
+      mutate(class = classes)
+    accu <- accuracy_ds(x = data.to.accu)
+    print(paste("Accuracy:", accu))
   }
   classes
 }
-

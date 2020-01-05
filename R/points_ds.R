@@ -44,23 +44,41 @@
 #'@import ggplot2
 #'@import caret
 #'
-points_ds<-function(x,k=2,queen=T,data=2:ncol(x),
-                    method = "euclidean",style="B",
-                    disjoint=F,n.neigh=8,plot=T,accuracy=T)
+points_ds <- function(x,
+                      k = 2,
+                      queen = T,
+                      data = 2:ncol(x),
+                      method = "euclidean",
+                      style = "B",
+                      disjoint = F,
+                      n.neigh = 8,
+                      plot = T,
+                      accuracy = T)
 {
-  res<-prepare_points(x=x,
-                 method=method,
-                 n.neigh=n.neigh,plot=plot)
+  res <- prepare_points(
+    x = x,
+    method = method,
+    n.neigh = n.neigh,
+    plot = plot
+  )
 
-  fg<-build_graph(x=res[["x"]],x.nb=res[["x.nb"]],data=data,method=method,
-                  style=style)
-  classes<-part_communities(fg=fg[["fg"]],k=k)
-  if(accuracy==T)
+  fg <-
+    build_graph(
+      x = res[["x"]],
+      x.nb = res[["x.nb"]],
+      data = data,
+      method = method,
+      style = style
+    )
+  classes <- part_communities(fg = fg[["fg"]], k = k)
+  if (accuracy == T)
   {
-    data.to.accu<-res[["x"]]@data %>% dplyr::select(data) %>% mutate(class=classes)
-    accu<-accuracy_ds(x=data.to.accu)
-    print(paste("Accuracy:",accu ))
+    data.to.accu <-
+      res[["x"]]@data %>%
+      dplyr::select(data) %>%
+      mutate(class = classes)
+    accu <- accuracy_ds(x = data.to.accu)
+    print(paste("Accuracy:", accu))
   }
   classes
 }
-

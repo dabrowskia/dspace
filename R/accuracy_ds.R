@@ -9,18 +9,20 @@
 #' @export
 #'
 
-accuracy_ds<-function(x)
-{
-  x$class<-as.factor(x$class)
-  x<-x[complete.cases(x),]
-  garbage<-capture.output(model.rf <- train(
-    class~., x,
-    method = "ranger",
-    trControl = trainControl(n=5,
-                             method = "cv",
-                             verboseIter = TRUE
-    ))
 
-  )
-  round(max(model.rf$results$Accuracy),2)
+accuracy_ds <- function(x)
+{
+  x$class <- as.factor(x$class)
+  x <- x[complete.cases(x), ]
+  garbage <- capture.output(model.rf <- train(
+    class ~ .,
+    x,
+    method = "ranger",
+    trControl = trainControl(
+      n = 5,
+      method = "cv",
+      verboseIter = TRUEs
+    )
+  ))
+  round(max(model.rf$results$Accuracy), 2)
 }

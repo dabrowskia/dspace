@@ -29,32 +29,53 @@
 #' @return A vector of modularity measures for given range of divisions
 #' @export
 #'
-find_no_clusters<-function(x,polygon=T,queen=T,method="euclidean",data=2:ncol(x),
-                           style="B",n.neigh=8,disjoint=F,range=2:30)
-{
-  if(polygon==T)
+find_no_clusters <-
+  function(x,
+           polygon = T,
+           queen = T,
+           method = "euclidean",
+           data = 2:ncol(x),
+           style = "B",
+           n.neigh = 8,
+           disjoint = F,
+           range = 2:30)
   {
-    res<-prepare_polygons(x=x,queen=queen,
-                          method=method,
-                          disjoint=disjoint,
-                          n.neigh=n.neigh,plot=F)
-  } else {
-    res<-prepare_points(x=x,
-                        method=method,
-                        n.neigh=n.neigh,plot=F)
-  }
+    if (polygon == T)
+    {
+      res <- prepare_polygons(
+        x = x,
+        queen = queen,
+        method = method,
+        disjoint = disjoint,
+        n.neigh = n.neigh,
+        plot = F
+      )
+    } else {
+      res <- prepare_points(
+        x = x,
+        method = method,
+        n.neigh = n.neigh,
+        plot = F
+      )
+    }
 
 
-  fg<-build_graph(x=res[["x"]],x.nb=res[["x.nb"]],data=data,method=method,
-                  style=style)
-  graph<-fg[["graph"]]
-  fg<-fg[["fg"]]
-  modularities<-c()
-  for(i in range)
-  {
-    z<-cutat(fg,no=i)
-    modularities<-append(modularities,modularity(graph,z))
+    fg <-
+      build_graph(
+        x = res[["x"]],
+        x.nb = res[["x.nb"]],
+        data = data,
+        method = method,
+        style = style
+      )
+    graph <- fg[["graph"]]
+    fg <- fg[["fg"]]
+    modularities <- c()
+    for (i in range)
+    {
+      z <- cutat(fg, no = i)
+      modularities <- append(modularities, modularity(graph, z))
+    }
+    names(modularities) <- range
+    modularities
   }
-  names(modularities)<-range
-  modularities
-}
