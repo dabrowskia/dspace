@@ -27,6 +27,9 @@
 #'  be created. This is a slower option.
 #'@param plot should the neighbourhood be plotted
 #'@param accuracy logical should accuracy be calculated based on randomForest algorithm
+#'@param queen if TRUE, a single shared boundary point meets the contiguity condition,
+#'if FALSE, more than one shared point is required; note that more than one shared boundary
+#'point does not necessarily mean a shared boundary line
 #'
 #'@return vector of numbers representing regions to whicheach element
 #'@export
@@ -46,7 +49,7 @@
 #'
 points_ds <- function(x,
                       k = 2,
-                      queen = T,
+                      queen = T, #is this needed?
                       data = 2:ncol(x),
                       method = "euclidean",
                       style = "B",

@@ -4,7 +4,6 @@
 #' Prepares polygons for regionalization - changes simplea features to SpatailPolygonsDataFrame an calculates neighbourhood objects
 #'
 #' @param x point object
-#' @param k number of clusters
 #' @param queen logical should the wueen or the rook neighbourhood be calculated
 #' @param method the distance/similarity to calculate
 #' @param disjoint logical if polygons are not continuous

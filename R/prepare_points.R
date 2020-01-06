@@ -4,7 +4,6 @@
 #' Prepares points for regionalization - changes simplea features to SpatailPolygonsDataFrame an calculates neighbourhood objects
 #'
 #' @param x point object
-#' @param k number of clusters
 #' @param method the distance/similarity to calculate
 #' @param n.neigh at least how many neighbours should be taken into consideration
 #' @param plot logical if TRUE a plot showing neighbourhoods is beeing presented
