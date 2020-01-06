@@ -1,14 +1,15 @@
 Package: dspace
 Type: Package
-Title: Dividing Space - Data Driven Segementation of Spatial Data
+Title: Dividing space - Data driven segementation of spatial data
 Version: 1.0.0
-Author: person("Adam", "Dąbrowski", email = "adam.dabrowski@amu.edu.pl", 
-  role = c("aut", "cre"))
+Author: Adam Dabrowski
 Maintainer: Adam Dabrowski <adam.dabrowski@amu.edu.pl>
 Description: Divides geographical polygon and point data into spatially cohesive regions based on fast greedy community finding algorithm.
-License: 	GPL-2
+License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
-Imports: spgwr,dplyr,raster,sf,igraph,spdep,rgdal,reshape2,geosphere,tmap,ggplot2,caret
+Imports:
+        spgwr,dplyr,raster,sf,igraph,spdep,rgdal,reshape2,geosphere,tmap,ggplot2,caret
 Suggests: testthat
+Built: R 3.4.3; ; 2020-01-05 17:28:34 UTC; windows

@@ -1,0 +1,29 @@
+* installing *source* package 'dspace' ...
+** R
+** preparing package for lazy loading
+Ostrze¿enie: replacing previous import 'dplyr::union' by 'igraph::union' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::as_data_frame' by 'igraph::as_data_frame' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::groups' by 'igraph::groups' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::select' by 'raster::select' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::intersect' by 'raster::intersect' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'igraph::union' by 'raster::union' when loading 'dspace'
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+*** arch - i386
+Ostrze¿enie: replacing previous import 'dplyr::union' by 'igraph::union' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::groups' by 'igraph::groups' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::as_data_frame' by 'igraph::as_data_frame' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::intersect' by 'raster::intersect' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::select' by 'raster::select' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'igraph::union' by 'raster::union' when loading 'dspace'
+*** arch - x64
+Ostrze¿enie: replacing previous import 'dplyr::union' by 'igraph::union' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::as_data_frame' by 'igraph::as_data_frame' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::groups' by 'igraph::groups' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::select' by 'raster::select' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'dplyr::intersect' by 'raster::intersect' when loading 'dspace'
+Ostrze¿enie: replacing previous import 'igraph::union' by 'raster::union' when loading 'dspace'
+* DONE (dspace)
+In R CMD INSTALL
