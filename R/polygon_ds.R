@@ -33,24 +33,25 @@
 #'@return vector of numbers representing regions to whicheach element
 #'@export
 #'
-#' @examples
+#'@examples
+#'  library(tmap)
 #'  data("World",package = "tmap")
-#'  world<- filter(World,!is.na(World$lifeExp))
-#'  modularity<-find_no_clusters(world,data=c(9,10),disjoint = T,plot=T,n.neigh = 6)
+#'  World <- World[(!is.na(World$life_exp)),]
+#'  modularity <- find_no_clusters(World, data=c(9, 10), disjoint = TRUE, n.neigh = 6)
 #'  plot_modularity(modularity)
-#'  world$class<-polygon_ds(world,data=c(9,10),k=7,style="B",disjoint = T,plot=T,n.neigh = 6)
-#'  qtm(world,"class")
+#'  World$class <- polygon_ds(World, data=c(9,10), k=7, style="B", disjoint = TRUE, plot=TRUE, n.neigh = 6)
+#'  qtm(World,"class")
 
 polygon_ds <- function(x,
                        k = 2,
-                       queen = T,
+                       queen = TRUE,
                        data = 2:ncol(x),
                        method = "euclidean",
                        style = "B",
-                       disjoint = F,
+                       disjoint = FALSE,
                        n.neigh = 8,
-                       plot = T,
-                       accuracy = T)
+                       plot = TRUE,
+                       accuracy = TRUE)
 {
   res <- prepare_polygons(
     x = x,
@@ -71,7 +72,7 @@ polygon_ds <- function(x,
     )
 
   classes <- part_communities(fg = fg.graph[["fg"]], k = k)
-  if (accuracy == T)
+  if (accuracy == TRUE)
   {
     data.to.accu <-
       res[["x"]]@data %>%

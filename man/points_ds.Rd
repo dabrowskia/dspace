@@ -7,20 +7,24 @@
 points_ds(
   x,
   k = 2,
-  queen = T,
+  queen = TRUE,
   data = 2:ncol(x),
   method = "euclidean",
   style = "B",
-  disjoint = F,
+  disjoint = FALSE,
   n.neigh = 8,
-  plot = T,
-  accuracy = T
+  plot = TRUE,
+  accuracy = TRUE
 )
 }
 \arguments{
 \item{x}{point or polygon shapefile data;}
 
 \item{k}{number of clusters;}
+
+\item{queen}{if TRUE, a single shared boundary point meets the contiguity condition,
+if FALSE, more than one shared point is required; note that more than one shared boundary
+point does not necessarily mean a shared boundary line}
 
 \item{data}{atributes of the spatial data frame to calculate similarity or
 distance measure;}

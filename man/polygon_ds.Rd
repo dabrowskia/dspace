@@ -7,20 +7,24 @@
 polygon_ds(
   x,
   k = 2,
-  queen = T,
+  queen = TRUE,
   data = 2:ncol(x),
   method = "euclidean",
   style = "B",
-  disjoint = F,
+  disjoint = FALSE,
   n.neigh = 8,
-  plot = T,
-  accuracy = T
+  plot = TRUE,
+  accuracy = TRUE
 )
 }
 \arguments{
 \item{x}{point or polygon shapefile data;}
 
 \item{k}{number of clusters;}
+
+\item{queen}{if TRUE, a single shared boundary point meets the contiguity condition,
+if FALSE, more than one shared point is required; note that more than one shared boundary
+point does not necessarily mean a shared boundary line}
 
 \item{data}{atributes of the spatial data frame to calculate similarity or
 distance measure;}
@@ -58,10 +62,11 @@ is the similarity between nodes. Communities are created using fast greedy
 algorithm that maximizes their modularity.
 }
 \examples{
+ library(tmap)
  data("World",package = "tmap")
- world<- filter(World,!is.na(World$lifeExp))
- modularity<-find_no_clusters(world,data=c(9,10),disjoint = T,plot=T,n.neigh = 6)
+ World <- World[(!is.na(World$life_exp)),]
+ modularity <- find_no_clusters(World, data=c(9, 10), disjoint = TRUE, n.neigh = 6)
  plot_modularity(modularity)
- world$class<-polygon_ds(world,data=c(9,10),k=7,style="B",disjoint = T,plot=T,n.neigh = 6)
- qtm(world,"class")
+ World$class <- polygon_ds(World, data=c(9,10), k=7, style="B", disjoint = TRUE, plot=TRUE, n.neigh = 6)
+ qtm(World,"class")
 }

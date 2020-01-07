@@ -31,16 +31,16 @@
 #'
 find_no_clusters <-
   function(x,
-           polygon = T,
-           queen = T,
+           polygon = TRUE,
+           queen = TRUE,
            method = "euclidean",
            data = 2:ncol(x),
            style = "B",
            n.neigh = 8,
-           disjoint = F,
+           disjoint = FALSE,
            range = 2:30)
   {
-    if (polygon == T)
+    if (polygon == TRUE)
     {
       res <- prepare_polygons(
         x = x,
@@ -48,14 +48,14 @@ find_no_clusters <-
         method = method,
         disjoint = disjoint,
         n.neigh = n.neigh,
-        plot = F
+        plot = FALSE
       )
     } else {
       res <- prepare_points(
         x = x,
         method = method,
         n.neigh = n.neigh,
-        plot = F
+        plot = FALSE
       )
     }
 

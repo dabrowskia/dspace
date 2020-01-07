@@ -19,7 +19,10 @@ build_graph <- function(x, data, x.nb,
   nb.w <- nb2listw(x.nb, lcosts, style = style)
   t <- listw2mat(nb.w)
   colnames(t) <- rownames(t)
-  mst.bh.df <- t %>% melt() %>% filter(value != 0)
+  value <- NULL
+  mst.bh.df <- t %>%
+    melt(value.name = "value") %>%
+    dplyr::filter(value != 0)
 
   names(mst.bh.df) <- c('from', 'to', 'weight')
   PC1.graph <- graph_from_data_frame(mst.bh.df) %>% as.undirected()

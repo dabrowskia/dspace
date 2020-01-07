@@ -1,6 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-.gitignore
-..Rcheck
-.Rproj.user
-.git
+^.*\.gitignore$
+^.*\..Rcheck$
+^.*\.Rproj.user$
+

@@ -46,17 +46,18 @@
 #'@import tmap
 #'@import ggplot2
 #'@import caret
+#'@import sp
 #'
 points_ds <- function(x,
                       k = 2,
-                      queen = T, #is this needed?
+                      queen = TRUE, #is this needed?
                       data = 2:ncol(x),
                       method = "euclidean",
                       style = "B",
-                      disjoint = F,
+                      disjoint = FALSE,
                       n.neigh = 8,
-                      plot = T,
-                      accuracy = T)
+                      plot = TRUE,
+                      accuracy = TRUE)
 {
   res <- prepare_points(
     x = x,
@@ -74,7 +75,7 @@ points_ds <- function(x,
       style = style
     )
   classes <- part_communities(fg = fg[["fg"]], k = k)
-  if (accuracy == T)
+  if (accuracy == TRUE)
   {
     data.to.accu <-
       res[["x"]]@data %>%

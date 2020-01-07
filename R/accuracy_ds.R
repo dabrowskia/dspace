@@ -13,15 +13,15 @@
 accuracy_ds <- function(x)
 {
   x$class <- as.factor(x$class)
-  x <- x[complete.cases(x), ]
-  garbage <- capture.output(model.rf <- train(
+  x <- x[stats::complete.cases(x), ]
+  garbage <- utils::capture.output(model.rf <- train(
     class ~ .,
     x,
     method = "ranger",
     trControl = trainControl(
-      n = 5,
+      number = 5,
       method = "cv",
-      verboseIter = TRUEs
+      verboseIter = TRUE
     )
   ))
   round(max(model.rf$results$Accuracy), 2)

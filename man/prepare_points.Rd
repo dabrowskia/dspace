@@ -4,7 +4,7 @@
 \alias{prepare_points}
 \title{prepare_points}
 \usage{
-prepare_points(x, method = "euclidean", n.neigh = 8, plot = T)
+prepare_points(x, method = "euclidean", n.neigh = 8, plot = TRUE)
 }
 \arguments{
 \item{x}{point object}
@@ -14,8 +14,6 @@ prepare_points(x, method = "euclidean", n.neigh = 8, plot = T)
 \item{n.neigh}{at least how many neighbours should be taken into consideration}
 
 \item{plot}{logical if TRUE a plot showing neighbourhoods is beeing presented}
-
-\item{k}{number of clusters}
 }
 \value{
 neighbourhoods for coummunity finding

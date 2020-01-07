@@ -21,7 +21,7 @@ prepare_polygons <- function(x, queen,
   if (in.class == 'sf')
   {
     x.type = class(x$geom)[1]
-    x <- as(x, 'Spatial')
+    x <- sf::as_Spatial(x)
   }
   if ((in.class == 'sf' &
        !x.type %in% c("sfc_MULTIPOLYGON", "sfc_POLYGON")) |
@@ -33,7 +33,7 @@ prepare_polygons <- function(x, queen,
   # x@data[,data]<-apply(x@data[,data],2,scale)
   coords <- centroid(x)
   x.nb <- poly2nb(x, queen = queen)
-  if (disjoint == T)
+  if (disjoint == TRUE)
   {
     coords <- centroid(x)
     x.knn <- knearneigh(coords, k = n.neigh)
@@ -43,10 +43,10 @@ prepare_polygons <- function(x, queen,
     x.nb <- union.nb(x.nb, g.nb)
   }
 
-  if (plot == T)
+  if (plot == TRUE)
   {
     plot(x)
-    plot(x.nb, coords, add = T)
+    plot(x.nb, coords, add = TRUE)
   }
   res <- list()
   res[["x.nb"]] <- x.nb

@@ -18,8 +18,6 @@ prepare_polygons(x, queen, method, disjoint, n.neigh, plot)
 \item{n.neigh}{at least how many neighbours should be taken into regionalization if disjoint==T}
 
 \item{plot}{logical if TRUE a plot showing neighbourhoods is beeing presented}
-
-\item{k}{number of clusters}
 }
 \value{
 neighbourhoods for coummunity finding

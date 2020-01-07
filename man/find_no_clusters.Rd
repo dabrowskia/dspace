@@ -6,13 +6,13 @@
 \usage{
 find_no_clusters(
   x,
-  polygon = T,
-  queen = T,
+  polygon = TRUE,
+  queen = TRUE,
   method = "euclidean",
   data = 2:ncol(x),
   style = "B",
   n.neigh = 8,
-  disjoint = F,
+  disjoint = FALSE,
   range = 2:30
 )
 }
