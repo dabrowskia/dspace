@@ -1,12 +1,13 @@
 #' accuracy_ds
 #'
-#' Calculates the accuracy measure based on caret's ranger model for the regionalization done by polygon_ds or points_ds
+#' Calculates the accuracy measure based on caret's ranger model for the regionalization done 
+#' by polygon_ds or points_ds. It represents how accurate would random forest model predict 
+#' appropraite community based only on their attributes.
 #'
 #' @param x data frame with class atribute and the data that has been taken
 #'   into regionalization
 #'
 #' @return the accuracy measure of random forest classification
-#' @export
 #'
 
 

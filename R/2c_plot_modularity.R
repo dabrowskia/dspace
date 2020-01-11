@@ -7,7 +7,12 @@
 #'
 #' @return a plot of modularity values calculated for a given range of clusters
 #' @export
-#'
+#' @example 
+#' data("quakes")
+#' quakes <- SpatialPointsDataFrame(cbind( quakes$lat, quakes$long), quakes)
+#' quakes.modularity <- find_no_clusters(quakes, polygon = FALSE, data = 3:4)
+#' plot_modularity(quakes.modularity)
+
 plot_modularity <- function(mod)
 {
   mod %>%

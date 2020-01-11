@@ -53,6 +53,8 @@ polygon_ds <- function(x,
                        plot = TRUE,
                        accuracy = TRUE)
 {
+  #Prepare the polygons for further analysis by ckecking its class and converting to point neghbourhood representations 
+  
   res <- prepare_polygons(
     x = x,
     queen = queen,

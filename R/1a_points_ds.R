@@ -50,6 +50,13 @@
 #'@import caret
 #'@import sp
 #'
+#'@example
+#'data("quakes")
+#'quakes <- SpatialPointsDataFrame(
+#'cbind( quakes$lat, quakes$long), quakes)
+#'point_division <- points_ds(quakes, data=3:4,
+#'k=5, style="B")
+#'
 points_ds <- function(x,
                       k = 2,
                       queen = TRUE, #is this needed?
@@ -61,14 +68,14 @@ points_ds <- function(x,
                       plot = TRUE,
                       accuracy = TRUE)
 {
-  #Prepare the points for further analysis by ckecking its class and converting to neghbourhood representations 
+  #First step is to prepare the points for further analysis 
   res <- prepare_points(
     x = x,
     method = method,
     n.neigh = n.neigh,
     plot = plot
   )
-  #Building network/graph representation out of neghbour representation
+  #Building network/grap representation out of neghbour representation
   fg <-
     build_graph(
       x = res[["x"]],

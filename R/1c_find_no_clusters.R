@@ -28,7 +28,12 @@
 #'
 #' @return A vector of modularity measures for given range of divisions
 #' @export
-#'
+#' @example 
+#' data("quakes")
+#' quakes <- SpatialPointsDataFrame(cbind( quakes$lat, quakes$long), quakes)
+#' quakes.modularity <- find_no_clusters(quakes, polygon = FALSE, data = 3:4)
+#' plot_modularity(quakes.modularity)
+#' 
 find_no_clusters <-
   function(x,
            polygon = TRUE,

@@ -29,6 +29,7 @@ prepare_polygons <- function(x, queen,
     stop('x not a Polygon layer')
   }
 
+  # x@data[,data]<-apply(x@data[,data],2,scale)
   coords <- centroid(x)
   x.nb <- poly2nb(x, queen = queen)
   if (disjoint == TRUE)

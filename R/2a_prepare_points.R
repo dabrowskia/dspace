@@ -9,13 +9,13 @@
 #' @param plot logical if TRUE a plot showing neighbourhoods is beeing presented
 #'
 #' @return neighbourhoods for coummunity finding
-#' @export
 #'
 prepare_points <- function(x,
                            method = "euclidean",
                            n.neigh = 8,
                            plot = TRUE)
 {
+  #Ensuring that points are of appropraite type and sp class
   in.class <- class(x)[1]
   if (in.class == 'sf')
   {
@@ -31,7 +31,7 @@ prepare_points <- function(x,
     }
   }
 
-  # x@data[,data]<-apply(x@data[,data],2,scale)
+  #Convering to neghbour representation
   coords <- sp::coordinates(x)
   x.knn <- knearneigh(coords, k = n.neigh)
   x.nb <- knn2nb(x.knn)

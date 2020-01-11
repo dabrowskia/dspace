@@ -1,5 +1,3 @@
-
-
 #' part_communities
 #'
 #' Divides graph into defined number of regions
@@ -8,7 +6,6 @@
 #' @param fg hierarchical community object created from build_graph()
 #'
 #' @return a vector of classes - numbers of regions that particular polygon or point are classified to
-#' @export
 #'
 part_communities <- function(k, fg)
 {
