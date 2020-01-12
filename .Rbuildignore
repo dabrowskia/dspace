@@ -4,3 +4,4 @@
 ^.*\..Rcheck$
 ^.*\.Rproj.user$
 
+^README\.Rmd$
