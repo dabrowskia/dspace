@@ -61,3 +61,9 @@ on a topological network structure where points represent nodes and the edges
 are the degree of similarity between those nodes. Communities are created using fast greedy
 algorithm that maximizes their modularity.
 }
+\examples{
+data("quakes")
+quakes <- SpatialPointsDataFrame(cbind(quakes$lat, quakes$long), quakes)
+point_division <- points_ds(quakes, data = 3:4, k = 5, style = "B")
+
+}

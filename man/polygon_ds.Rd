@@ -2,7 +2,12 @@
 % Please edit documentation in R/1b_polygon_ds.R
 \name{polygon_ds}
 \alias{polygon_ds}
-\title{polygon_ds}
+\title{polygon_ds
+
+Creates a vector of community assignment based on neighbouring polygons. It
+creates a topological structure in which nodes represent polygons and the edge
+is the similarity between nodes. Communities are created using fast greedy
+algorithm that maximizes their modularity.}
 \usage{
 polygon_ds(
   x,
@@ -56,17 +61,21 @@ algorithm that builds topology}
 vector of numbers representing regions to whicheach element
 }
 \description{
+polygon_ds
+
 Creates a vector of community assignment based on neighbouring polygons. It
 creates a topological structure in which nodes represent polygons and the edge
 is the similarity between nodes. Communities are created using fast greedy
 algorithm that maximizes their modularity.
 }
 \examples{
- library(tmap)
- data("World",package = "tmap")
- World <- World[(!is.na(World$life_exp)),]
- modularity <- find_no_clusters(World, data=c(9, 10), disjoint = TRUE, n.neigh = 6)
- plot_modularity(modularity)
- World$class <- polygon_ds(World, data=c(9,10), k=7, style="B", disjoint = TRUE, plot=TRUE, n.neigh = 6)
- qtm(World,"class")
+library(tmap)
+data("World",package = "tmap")
+World <- World[(!is.na(World$life_exp)), ]
+modularity <- find_no_clusters(World, data = c(9, 10),
+    disjoint = TRUE, n.neigh = 6)
+plot_modularity(modularity)
+World$class <- polygon_ds(World, data = c(9, 10), k = 7, style = "B",
+    disjoint = TRUE, plot = TRUE, n.neigh = 6)
+qtm(World, "class")
 }

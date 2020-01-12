@@ -14,7 +14,7 @@ into regionalization}
 the accuracy measure of random forest classification
 }
 \description{
-Calculates the accuracy measure based on caret's ranger model for the regionalization done 
-by polygon_ds or points_ds. It represents how accurate would random forest model predict 
+Calculates the accuracy measure based on caret's ranger model for the regionalization done
+by polygon_ds or points_ds. It represents how accurate would random forest model predict
 appropraite community based only on their attributes.
 }

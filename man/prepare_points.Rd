@@ -19,5 +19,5 @@ prepare_points(x, method = "euclidean", n.neigh = 8, plot = TRUE)
 neighbourhoods for coummunity finding
 }
 \description{
-Prepares points for regionalization - changes simplea features to SpatailPolygonsDataFrame an calculates neighbourhood objects
+Prepares points for regionalization - changes simples features to SpatialPolygonsDataFrame and calculates neighbourhood objects
 }

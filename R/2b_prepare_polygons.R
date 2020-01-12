@@ -1,13 +1,12 @@
-
 #' prepare_polygon
 #'
-#' Prepares polygons for regionalization - changes simplea features to SpatailPolygonsDataFrame an calculates neighbourhood objects
+#' Prepares polygons for regionalization - changes simple features to SpatialPolygonsDataFrame and calculates neighbourhood objects
 #'
 #' @param x point object
 #' @param queen logical should the wueen or the rook neighbourhood be calculated
 #' @param method the distance/similarity to calculate
 #' @param disjoint logical if polygons are not continuous
-#' @param n.neigh at least how many neighbours should be taken into regionalization if disjoint==T
+#' @param n.neigh at least how many neighbours should be taken into regionalization if disjoint==TRUE
 #' @param plot logical if TRUE a plot showing neighbourhoods is beeing presented
 #'
 #' @return neighbourhoods for coummunity finding

@@ -9,7 +9,7 @@ part_communities(k, fg)
 \arguments{
 \item{k}{number of clusters to create regionalization}
 
-\item{fg}{hierarchical community object created from build_graph()}
+\item{fg}{hierarchical community object created from \code{build_graph()}}
 }
 \value{
 a vector of classes - numbers of regions that particular polygon or point are classified to

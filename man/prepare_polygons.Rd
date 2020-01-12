@@ -15,7 +15,7 @@ prepare_polygons(x, queen, method, disjoint, n.neigh, plot)
 
 \item{disjoint}{logical if polygons are not continuous}
 
-\item{n.neigh}{at least how many neighbours should be taken into regionalization if disjoint==T}
+\item{n.neigh}{at least how many neighbours should be taken into regionalization if disjoint==TRUE}
 
 \item{plot}{logical if TRUE a plot showing neighbourhoods is beeing presented}
 }
@@ -23,5 +23,5 @@ prepare_polygons(x, queen, method, disjoint, n.neigh, plot)
 neighbourhoods for coummunity finding
 }
 \description{
-Prepares polygons for regionalization - changes simplea features to SpatailPolygonsDataFrame an calculates neighbourhood objects
+Prepares polygons for regionalization - changes simple features to SpatialPolygonsDataFrame and calculates neighbourhood objects
 }

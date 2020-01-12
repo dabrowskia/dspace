@@ -1,4 +1,3 @@
-
 #' find_no_clusters
 #'
 #' Helps identify how many regions should be divided by analyzing the changes in modularity value
@@ -28,7 +27,7 @@
 #'
 #' @return A vector of modularity measures for given range of divisions
 #' @export
-#' @example 
+#' @examples 
 #' data("quakes")
 #' quakes <- SpatialPointsDataFrame(cbind( quakes$lat, quakes$long), quakes)
 #' quakes.modularity <- find_no_clusters(quakes, polygon = FALSE, data = 3:4)

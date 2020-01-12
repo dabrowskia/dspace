@@ -15,7 +15,7 @@ build_graph(x, data, x.nb, method, style)
 
 \item{method}{method to calculate similarity/distance betweem neighbouring points or polygons}
 
-\item{style}{style of neighbourhood (see spdep::nb2listw)}
+\item{style}{style of neighbourhood (see `spdep::nb2listw``)}
 }
 \value{
 a list containing community object ("fg") and graph object ("graph")
