@@ -1,7 +1,7 @@
 Package: dspace
 Type: Package
 Title: Dividing Space - Data Driven Segementation of Spatial Data
-Version: 1.0.0
+Version: 0.9.1
 Author: c(
     person("Adam", "Dabrowski", 
     email = "adam.dabrowski@amu.edu.pl", 
