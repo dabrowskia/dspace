@@ -1,0 +1,12 @@
+citHeader("To cite dspace in publications use:")
+
+citEntry(
+  entry    = "manual",
+  title    = "Dividing Space - Data Driven Segementation of Spatial Data",
+  author   = c(person("Adam", "Dąbrowski"), person("Jakub", "Nowosad")),
+  year     = "2020",
+  note     = "R package version 1.0.0",
+  url      = "",
+  textVersion = "Dąbrowski A., Nowosad, J. (2020). Dividing Space - Data Driven Segementation of Spatial Data. R package version 1.0.0."
+)
+
