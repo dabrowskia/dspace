@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/dabrowskia/dspace.svg?branch=master)](https://travis-ci.org/dabrowskia/dspace)
 <!-- badges: end -->
 
 The goal of dspace is to …
