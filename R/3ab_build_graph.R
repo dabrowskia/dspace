@@ -24,10 +24,10 @@ build_graph <- function(x, data, x.nb,
     melt(value.name = "value") %>%
     dplyr::filter(value != 0)
 
-  names(data.for.graph) <- c('from', 'to', 'weight')
+  names(data.for.graph) <- c("from", "to", "weight")
   data.graph <- graph_from_data_frame(data.for.graph) %>% as.undirected()
   data.graph <-
-    subgraph.edges(data.graph, which(E(data.graph)$weight != 0), delete.vertices = F)
+    subgraph.edges(data.graph, which(E(data.graph)$weight != 0), delete.vertices = FALSE)
   E(data.graph)$weight <-
     1 - ((E(data.graph)$weight - min(E(data.graph)$weight)) /
            (max(E(data.graph)$weight) - min(E(data.graph)$weight)))

@@ -16,16 +16,16 @@ prepare_polygons <- function(x, queen,
                              disjoint, n.neigh, plot)
 {
   in.class <- class(x)[1]
-  if (in.class == 'sf')
+  if (in.class == "sf")
   {
     x.type = class(x$geom)[1]
     x <- sf::as_Spatial(x)
   }
-  if ((in.class == 'sf' &
+  if ((in.class == "sf" &
        !x.type %in% c("sfc_MULTIPOLYGON", "sfc_POLYGON")) |
-      !in.class %in% c("sf", 'SpatialPolygonsDataFrame'))
+      !in.class %in% c("sf", "SpatialPolygonsDataFrame"))
   {
-    stop('x not a Polygon layer')
+    stop("x not a Polygon layer")
   }
 
   # x@data[,data]<-apply(x@data[,data],2,scale)
