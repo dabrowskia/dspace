@@ -35,3 +35,4 @@ Suggests:
     testthat
 URL: https://github.com/dabrowskia/dspace
 BugReports: https://github.com/dabrowskia/dspace/issues
+Roxygen: list(markdown = TRUE)
