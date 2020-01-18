@@ -1,4 +1,3 @@
-
 #' plot_modularity
 #'
 #' plots the modularity statistic against the number of clusters.
@@ -7,7 +6,7 @@
 #'
 #' @return a plot of modularity values calculated for a given range of clusters
 #' @export
-#' @example 
+#' @examples 
 #' data("quakes")
 #' quakes <- SpatialPointsDataFrame(cbind( quakes$lat, quakes$long), quakes)
 #' quakes.modularity <- find_no_clusters(quakes, polygon = FALSE, data = 3:4)
@@ -20,7 +19,7 @@ plot_modularity <- function(mod)
     ggplot(aes(x = as.numeric(names(mod)), y = mod)) +
     geom_point() +
     geom_vline(xintercept = which(mod == max(mod)) + 1) +
-    xlab('number of clusters') +
+    xlab("number of clusters") +
     ylab("Modularity") +
     theme_light()
 }

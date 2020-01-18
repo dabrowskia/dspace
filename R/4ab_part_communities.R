@@ -3,7 +3,7 @@
 #' Divides graph into defined number of regions
 #'
 #' @param k number of clusters to create regionalization
-#' @param fg hierarchical community object created from build_graph()
+#' @param fg hierarchical community object created from `build_graph()`
 #'
 #' @return a vector of classes - numbers of regions that particular polygon or point are classified to
 #'

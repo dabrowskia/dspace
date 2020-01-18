@@ -4,3 +4,5 @@
 ^.*\..Rcheck$
 ^.*\.Rproj.user$
 
+^README\.Rmd$
+^\.travis\.yml$

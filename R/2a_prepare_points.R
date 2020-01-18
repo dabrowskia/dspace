@@ -1,7 +1,6 @@
-
 #' prepare_points
 #'
-#' Prepares points for regionalization - changes simplea features to SpatailPolygonsDataFrame an calculates neighbourhood objects
+#' Prepares points for regionalization - changes simples features to SpatialPolygonsDataFrame and calculates neighbourhood objects
 #'
 #' @param x point object
 #' @param method the distance/similarity to calculate
