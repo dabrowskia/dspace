@@ -32,11 +32,11 @@ prepare_points <- function(x,
 
   #Convering to neghbour representation
   coords <- sp::coordinates(x)
-  x.knn <- knearneigh(coords, k = n.neigh)
-  x.nb <- knn2nb(x.knn)
-  gn <- gabrielneigh(coords, nnmult = 3)
-  g.nb <- graph2nb(gn)
-  x.nb <- union.nb(x.nb, g.nb)
+  x.knn <- spdep::knearneigh(coords, k = n.neigh)
+  x.nb <- spdep::knn2nb(x.knn)
+  gn <- spdep::gabrielneigh(coords, nnmult = 3)
+  g.nb <- spdep::graph2nb(gn)
+  x.nb <- spdep::union.nb(x.nb, g.nb)
 
 
   if (plot == TRUE)

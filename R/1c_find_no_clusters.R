@@ -27,11 +27,11 @@
 #'
 #' @return A vector of modularity measures for given range of divisions
 #' @export
+#' @usage data(realEstate)
 #' @examples 
-#' data("quakes")
-#' quakes <- SpatialPointsDataFrame(cbind( quakes$lat, quakes$long), quakes)
-#' quakes.modularity <- find_no_clusters(quakes, polygon = FALSE, data = 3:4)
-#' plot_modularity(quakes.modularity)
+#' data(realEstate)
+#' realEstate.modularity <- find_no_clusters(realEstate, polygon = FALSE)
+#' plot_modularity(realEstate.modularity)
 #' 
 find_no_clusters <-
   function(x,
@@ -77,7 +77,7 @@ find_no_clusters <-
     modularities <- c()
     for (i in range)
     {
-      z <- cutat(fg, no = i)
+      z <- igraph::cutat(fg, no = i)
       modularities <- append(modularities, modularity(graph, z))
     }
     names(modularities) <- range

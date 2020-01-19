@@ -4,17 +4,7 @@
 \alias{find_no_clusters}
 \title{find_no_clusters}
 \usage{
-find_no_clusters(
-  x,
-  polygon = TRUE,
-  queen = TRUE,
-  method = "euclidean",
-  data = 2:ncol(x),
-  style = "B",
-  n.neigh = 8,
-  disjoint = FALSE,
-  range = 2:30
-)
+data(realEstate)
 }
 \arguments{
 \item{x}{spatial data for regionalization}
@@ -55,9 +45,8 @@ A vector of modularity measures for given range of divisions
 Helps identify how many regions should be divided by analyzing the changes in modularity value
 }
 \examples{
-data("quakes")
-quakes <- SpatialPointsDataFrame(cbind( quakes$lat, quakes$long), quakes)
-quakes.modularity <- find_no_clusters(quakes, polygon = FALSE, data = 3:4)
-plot_modularity(quakes.modularity)
+data("realEstate")
+realEstate.modularity <- find_no_clusters(realEstate, polygon = FALSE)
+plot_modularity(realEstate.modularity)
 
 }

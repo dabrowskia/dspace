@@ -15,11 +15,11 @@ accuracy_ds <- function(x)
 {
   x$class <- as.factor(x$class)
   x <- x[stats::complete.cases(x), ]
-  garbage <- utils::capture.output(model.rf <- train(
+  garbage <- utils::capture.output(model.rf <- caret::train(
     class ~ .,
     x,
     method = "ranger",
-    trControl = trainControl(
+    trControl = caret::trainControl(
       number = 5,
       method = "cv",
       verboseIter = TRUE

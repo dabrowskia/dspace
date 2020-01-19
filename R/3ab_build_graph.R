@@ -15,23 +15,23 @@ build_graph <- function(x, data, x.nb,
                         method, style)
 {
   #Calculating similarity between the nodes
-  lcosts <- nbcosts(method = method, x.nb, x@data[, data])
-  nb.w <- nb2listw(x.nb, lcosts, style = style)
-  t <- listw2mat(nb.w)
+  lcosts <- spdep::nbcosts(method = method, x.nb, x@data[, data])
+  nb.w <- spdep::nb2listw(x.nb, lcosts, style = style)
+  t <- spdep::listw2mat(nb.w)
   colnames(t) <- rownames(t)
   value <- NULL
   data.for.graph <- t %>%
-    melt(value.name = "value") %>%
+    reshape2::melt(value.name = "value") %>%
     dplyr::filter(value != 0)
 
   names(data.for.graph) <- c("from", "to", "weight")
-  data.graph <- graph_from_data_frame(data.for.graph) %>% as.undirected()
+  data.graph <- igraph::graph_from_data_frame(data.for.graph) %>% as.undirected()
   data.graph <-
-    subgraph.edges(data.graph, which(E(data.graph)$weight != 0), delete.vertices = FALSE)
-  E(data.graph)$weight <-
-    1 - ((E(data.graph)$weight - min(E(data.graph)$weight)) /
-           (max(E(data.graph)$weight) - min(E(data.graph)$weight)))
-  fg <- cluster_fast_greedy(data.graph)
+    igraph::subgraph.edges(data.graph, which(igraph::E(data.graph)$weight != 0), delete.vertices = FALSE)
+  igraph::E(data.graph)$weight <-
+    1 - ((igraph::E(data.graph)$weight - min(igraph::E(data.graph)$weight)) /
+           (max(igraph::E(data.graph)$weight) - min(igraph::E(data.graph)$weight)))
+  fg <- igraph::cluster_fast_greedy(data.graph)
   res <- list()
   res[["fg"]] <- fg
   res[["graph"]] <- data.graph

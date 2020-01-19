@@ -81,7 +81,7 @@ polygon_ds <- function(x,
     data.to.accu <-
       res[["x"]]@data %>%
       dplyr::select(data) %>%
-      mutate(class = classes)
+      dplyr::mutate(class = classes)
     accu <- accuracy_ds(x = data.to.accu)
     print(paste("Accuracy:", accu))
   }

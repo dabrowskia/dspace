@@ -29,16 +29,16 @@ prepare_polygons <- function(x, queen,
   }
 
   # x@data[,data]<-apply(x@data[,data],2,scale)
-  coords <- centroid(x)
-  x.nb <- poly2nb(x, queen = queen)
+  coords <- geosphere::centroid(x)
+  x.nb <- spdep::poly2nb(x, queen = queen)
   if (disjoint == TRUE)
   {
-    coords <- centroid(x)
-    x.knn <- knearneigh(coords, k = n.neigh)
-    x.nb <- knn2nb(x.knn)
-    gn <- gabrielneigh(coords, nnmult = 3)
-    g.nb <- graph2nb(gn)
-    x.nb <- union.nb(x.nb, g.nb)
+    coords <- geosphere::centroid(x)
+    x.knn <- spdep::knearneigh(coords, k = n.neigh)
+    x.nb <- spdep::knn2nb(x.knn)
+    gn <- spdep::gabrielneigh(coords, nnmult = 3)
+    g.nb <- spdep::graph2nb(gn)
+    x.nb <- spdep::union.nb(x.nb, g.nb)
   }
 
   if (plot == TRUE)

@@ -11,10 +11,10 @@ part_communities <- function(k, fg)
 {
   classes.db <- data.frame()
 
-  classes <- cutat(fg, no = k)
-  clusters.fg <- membership(fg)
+  classes <- igraph::cutat(fg, no = k)
+  clusters.fg <- igraph::membership(fg)
   clusters.fg <-
-    data.frame(ID = as.numeric(names(membership(fg))),
+    data.frame(ID = as.numeric(names(igraph::membership(fg))),
                class = classes)
   clusters.fg <- clusters.fg[order(clusters.fg$ID), ]
   clusters.fg$class
