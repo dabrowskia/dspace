@@ -80,7 +80,7 @@ find_no_clusters <-
     for (i in range)
     {
       z <- igraph::cutat(fg, no = i)
-      modularities <- append(modularities, modularity(graph, z))
+      modularities <- append(modularities, igraph::modularity(graph, z))
     }
     names(modularities) <- range
     modularities

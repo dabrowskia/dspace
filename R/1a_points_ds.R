@@ -34,25 +34,15 @@
 #' 
 #' @export
 #' 
-#' @import spgwr
-#' @import dplyr
-#' @import raster
-#' @import sf
-#' @import igraph
-#' @import spdep
-#' @import rgdal
-#' @import reshape2
-#' @import geosphere
-#' @import tmap
-#' @import ggplot2
-#' @import caret
-#' @import sp
-#' 
 #' @examples
-#' data("quakes")
-#' quakes <- SpatialPointsDataFrame(cbind(quakes$lat, quakes$long), quakes)
-#' point_division <- points_ds(quakes, data = 3:4, k = 5, style = "B")
-#'
+#' data("realEstate")
+#' realEstate <- points_ds(realEstate,k = 5, )
+#' \dontrun{
+#' library(dismo)
+#' pol <- voronoi(xy = as(realEstate,'Spatial'))
+#' qtm(pol, "class")
+#' }
+#' 
 points_ds <- function(x,
                       k = 2,
                       queen = TRUE, #is this needed?
