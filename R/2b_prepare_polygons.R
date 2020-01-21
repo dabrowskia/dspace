@@ -8,7 +8,7 @@
 #' @param disjoint logical if polygons are not continuous
 #' @param n.neigh at least how many neighbours should be taken into regionalization if disjoint==TRUE
 #' @param plot logical if TRUE a plot showing neighbourhoods is beeing presented
-#'
+#' @export
 #' @return neighbourhoods for coummunity finding
 #'
 prepare_polygons <- function(x, queen,

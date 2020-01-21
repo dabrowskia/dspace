@@ -6,7 +6,7 @@
 #' @param method the distance/similarity to calculate
 #' @param n.neigh at least how many neighbours should be taken into consideration
 #' @param plot logical if TRUE a plot showing neighbourhoods is beeing presented
-#'
+#' @export
 #' @return neighbourhoods for coummunity finding
 #'
 prepare_points <- function(x,

@@ -45,8 +45,10 @@ A vector of modularity measures for given range of divisions
 Helps identify how many regions should be divided by analyzing the changes in modularity value
 }
 \examples{
-data("realEstate")
+data(realEstate)
 realEstate.modularity <- find_no_clusters(realEstate, polygon = FALSE)
 plot_modularity(realEstate.modularity)
+
+data()
 
 }

@@ -56,7 +56,7 @@
 points_ds <- function(x,
                       k = 2,
                       queen = TRUE, #is this needed?
-                      data = 2:ncol(x),
+                      data = -grep(names(x),pattern = '^geom'),
                       method = "euclidean",
                       style = "B",
                       disjoint = FALSE,

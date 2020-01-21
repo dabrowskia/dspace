@@ -13,7 +13,7 @@ polygon_ds(
   x,
   k = 2,
   queen = TRUE,
-  data = 2:ncol(x),
+  data = -grep(names(x), pattern = "^geom"),
   method = "euclidean",
   style = "B",
   disjoint = FALSE,
@@ -69,13 +69,10 @@ is the similarity between nodes. Communities are created using fast greedy
 algorithm that maximizes their modularity.
 }
 \examples{
-library(tmap)
-data("World",package = "tmap")
-World <- World[(!is.na(World$life_exp)), ]
-modularity <- find_no_clusters(World, data = c(9, 10),
-    disjoint = TRUE, n.neigh = 6)
+data("socioGrid")
+modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)
 plot_modularity(modularity)
-World$class <- polygon_ds(World, data = c(9, 10), k = 7, style = "B",
-    disjoint = TRUE, plot = TRUE, n.neigh = 6)
-qtm(World, "class")
+socioGrid$class <- polygon_ds(socioGrid, k = 7,
+    disjoint = TRUE, plot = TRUE)
+qtm(socioGrid, "class")
 }

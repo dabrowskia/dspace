@@ -14,3 +14,18 @@
 #' @examples
 #' data(realEstate)
 "realEstate"
+
+#' Socio-economic dataset 
+#'
+#' Socio-economic factors aggregated to a grid of 500m squares
+#'
+#' @docType data
+#'
+#' @usage data(socioGrid)
+#'
+#'
+#' @keywords datasets
+#'
+#' @examples
+#' data(socioGrid)
+"socioGrid"

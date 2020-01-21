@@ -8,7 +8,7 @@ points_ds(
   x,
   k = 2,
   queen = TRUE,
-  data = 2:ncol(x),
+  data = -grep(names(x), pattern = "^geom"),
   method = "euclidean",
   style = "B",
   disjoint = FALSE,
