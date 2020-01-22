@@ -34,23 +34,10 @@
 #' 
 #' @export
 #' 
-#' @import spgwr
-#' @import dplyr
-#' @import raster
-#' @import sf
-#' @import igraph
-#' @import spdep
-#' @import rgdal
-#' @import reshape2
-#' @import geosphere
-#' @import tmap
-#' @import ggplot2
-#' @import caret
-#' @import sp
 #' 
 #' @examples
 #' data("quakes")
-#' quakes <- SpatialPointsDataFrame(cbind(quakes$lat, quakes$long), quakes)
+#' quakes <- sp::SpatialPointsDataFrame(cbind(quakes$lat, quakes$long), quakes)
 #' point_division <- points_ds(quakes, data = 3:4, k = 5, style = "B")
 #'
 points_ds <- function(x,
