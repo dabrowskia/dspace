@@ -41,7 +41,7 @@ prepare_points <- function(x,
 
   if (plot == TRUE)
   {
-    plot(x, lwd = 2)
+    sp::plot(x, lwd = 2)
     plot(x.nb, coords, add = TRUE)
   }
   res <- list()
