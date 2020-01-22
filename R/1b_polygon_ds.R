@@ -39,12 +39,12 @@
 #' plot_modularity(modularity)
 #' socioGrid$class <- polygon_ds(socioGrid, k = 7,
 #'     disjoint = TRUE, plot = TRUE)
-#' qtm(socioGrid, "class")
+#' tmap::qtm(socioGrid, "class")
 
 polygon_ds <- function(x,
                        k = 2,
                        queen = TRUE,
-                       data = -grep(names(x),pattern = '^geom'),
+                       data = -grep(names(x), pattern = '^geom'),
                        method = "euclidean",
                        style = "B",
                        disjoint = FALSE,
