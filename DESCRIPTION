@@ -2,7 +2,7 @@ Package: dspace
 Type: Package
 Title: Dividing Space - Data Driven Segementation of Spatial Data
 Version: 0.9.1
-Author: c(
+Authors@R: c(
     person("Adam", "Dabrowski", 
     email = "adam.dabrowski@amu.edu.pl", 
     role = c("aut", "cre")),
@@ -30,7 +30,7 @@ Imports:
     tmap,
     ggplot2,
     caret,
-    sp
+    magrittr
 Suggests: 
     testthat,
     knitr,

@@ -2,47 +2,38 @@
 #'
 #' Prepares points for regionalization - changes simples features to SpatialPolygonsDataFrame and calculates neighbourhood objects
 #'
-#' @param x point object
+#' @param x point object of class sf
 #' @param method the distance/similarity to calculate
 #' @param n.neigh at least how many neighbours should be taken into consideration
 #' @param plot logical if TRUE a plot showing neighbourhoods is beeing presented
-#' @export
 #' @return neighbourhoods for coummunity finding
 #'
 prepare_points <- function(x,
-                           method = "euclidean",
-                           n.neigh = 8,
-                           plot = TRUE)
+                           method,
+                           n.neigh,
+                           plot)
 {
   #Ensuring that points are of appropraite type and sp class
   in.class <- class(x)[1]
-  if (in.class == 'sf')
-  {
-    x.type = class(x$geom)[1]
-    x <- sf::as_Spatial(x)
-  }
-  if(exists('x.type')) {
-    if ((in.class == 'sf' &
-         !x.type %in% c("sfc_MULTIPOINT", "sfc_POINT")) |
-        !in.class %in% c("sf", 'SpatialPointsDataFrame'))
-    {
-      stop('x not a point layer')
-    }
-  }
-
+  if (in.class != "sf") stop("object is not of class 'sf'")
+  
+  x.type <-class(x$geometry)[1]
+  if(x.type != "sfc_POINT") stop("object is not of type 'POINT'")
+  
   #Convering to neghbour representation
-  coords <- sp::coordinates(x)
+  coords <- x$geometry
   x.knn <- spdep::knearneigh(coords, k = n.neigh)
+  x.knn <- spdep::knearneigh(x$geometry, k = n.neigh)
   x.nb <- spdep::knn2nb(x.knn)
-  gn <- spdep::gabrielneigh(coords, nnmult = 3)
+  gn <- spdep::gabrielneigh(x$geometry, nnmult = 3)
   g.nb <- spdep::graph2nb(gn)
   x.nb <- spdep::union.nb(x.nb, g.nb)
 
 
-  if (plot == TRUE)
+  if (plot == TRUE) #this should plot the neighbourhoods
   {
-    plot(x, lwd = 2)
-    plot(x.nb, coords, add = TRUE)
+    plot(x[1], lwd = 2)
+    plot(x.nb, x$geometry, add = TRUE)
   }
   res <- list()
   res[["x.nb"]] <- x.nb

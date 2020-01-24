@@ -8,32 +8,31 @@
 #' @param disjoint logical if polygons are not continuous
 #' @param n.neigh at least how many neighbours should be taken into regionalization if disjoint==TRUE
 #' @param plot logical if TRUE a plot showing neighbourhoods is beeing presented
-#' @export
 #' @return neighbourhoods for coummunity finding
 #'
 prepare_polygons <- function(x, queen,
                              method,
                              disjoint, n.neigh, plot)
 {
-  in.class <- class(x)[1]
-  if (in.class == "sf")
-  {
-    x.type = class(x$geom)[1]
-    x <- sf::as_Spatial(x)
-  }
-  if ((in.class == "sf" &
-       !x.type %in% c("sfc_MULTIPOLYGON", "sfc_POLYGON")) |
-      !in.class %in% c("sf", "SpatialPolygonsDataFrame"))
-  {
-    stop("x not a Polygon layer")
-  }
+  # in.class <- class(x)[1]
+  # if (in.class == "sf")
+  # {
+  #   x.type = class(x$geom)[1]
+  #   x <- sf::as_Spatial(x)
+  # }
+  # if ((in.class == "sf" &
+  #      !x.type %in% c("sfc_MULTIPOLYGON", "sfc_POLYGON")) |
+  #     !in.class %in% c("sf", "SpatialPolygonsDataFrame"))
+  # {
+  #   stop("x not a Polygon layer")
+  # }
 
   # x@data[,data]<-apply(x@data[,data],2,scale)
-  coords <- geosphere::centroid(x)
+  coords <- sf::st_centroid(x)$geometry
   x.nb <- spdep::poly2nb(x, queen = queen)
   if (disjoint == TRUE)
   {
-    coords <- geosphere::centroid(x)
+    # coords <- geosphere::centroid(x)
     x.knn <- spdep::knearneigh(coords, k = n.neigh)
     x.nb <- spdep::knn2nb(x.knn)
     gn <- spdep::gabrielneigh(coords, nnmult = 3)
@@ -41,9 +40,10 @@ prepare_polygons <- function(x, queen,
     x.nb <- spdep::union.nb(x.nb, g.nb)
   }
 
+  
   if (plot == TRUE)
   {
-    plot(x)
+    plot(x[1])
     plot(x.nb, coords, add = TRUE)
   }
   res <- list()

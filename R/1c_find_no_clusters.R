@@ -26,8 +26,8 @@
 #'   numbers, the longer it will take to calculate plot
 #'
 #' @return A vector of modularity measures for given range of divisions
-#' @export
 #' @usage data(realEstate)
+#' @export
 #' @examples 
 #' data(realEstate)
 #' realEstate.modularity <- find_no_clusters(realEstate, polygon = FALSE)

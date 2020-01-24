@@ -6,7 +6,6 @@
 #' @param fg hierarchical community object created from `build_graph()`
 #'
 #' @return a vector of classes - numbers of regions that particular polygon or point are classified to
-#'
 part_communities <- function(k, fg)
 {
   classes.db <- data.frame()

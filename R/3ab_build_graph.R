@@ -10,12 +10,12 @@
 #'
 #' @return a list containing community object ("fg") and graph object ("graph")
 #' 
-#' 
 build_graph <- function(x, data, x.nb,
                         method, style)
 {
+  
   #Calculating similarity between the nodes
-  lcosts <- spdep::nbcosts(method = method, x.nb, x@data[, data])
+  lcosts <- spdep::nbcosts(method = method, x.nb, sf::st_set_geometry(x[,data],NULL))
   nb.w <- spdep::nb2listw(x.nb, lcosts, style = style)
   t <- spdep::listw2mat(nb.w)
   colnames(t) <- rownames(t)
@@ -37,3 +37,4 @@ build_graph <- function(x, data, x.nb,
   res[["graph"]] <- data.graph
   res
 }
+

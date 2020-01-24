@@ -8,7 +8,6 @@
 #'   into regionalization
 #'
 #' @return the accuracy measure of random forest classification
-#'
 
 
 accuracy_ds <- function(x)

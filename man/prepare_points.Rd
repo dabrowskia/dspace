@@ -4,10 +4,10 @@
 \alias{prepare_points}
 \title{prepare_points}
 \usage{
-prepare_points(x, method = "euclidean", n.neigh = 8, plot = TRUE)
+prepare_points(x, method, n.neigh, plot)
 }
 \arguments{
-\item{x}{point object}
+\item{x}{point object of class sf}
 
 \item{method}{the distance/similarity to calculate}
 

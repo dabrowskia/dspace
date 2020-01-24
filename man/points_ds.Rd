@@ -7,11 +7,9 @@
 points_ds(
   x,
   k = 2,
-  queen = TRUE,
   data = -grep(names(x), pattern = "^geom"),
   method = "euclidean",
   style = "B",
-  disjoint = FALSE,
   n.neigh = 8,
   plot = TRUE,
   accuracy = TRUE
@@ -21,10 +19,6 @@ points_ds(
 \item{x}{point or polygon shapefile data;}
 
 \item{k}{number of communities;}
-
-\item{queen}{if TRUE, a single shared boundary point meets the contiguity condition,
-if FALSE, more than one shared point is required; note that more than one shared boundary
-point does not necessarily mean a shared boundary line}
 
 \item{data}{atributes of the spatial data frame to calculate similarity or
 distance measure;}
@@ -40,17 +34,21 @@ the distance.}
 
 \item{style}{style can take values “W”, “B”, “C”, “U”, “minmax” and “S” (see spdep::nb2listw)}
 
-\item{disjoint}{if default settings generate error occuring to disjoint
-subgraphs it means, that in some places points or polygons are to disjoint to
-generate one connected graph. Use disjoint = T to enforce that one graph will
-be created. This is a slower option.}
-
 \item{n.neigh}{number of neighbours considered in the k-nearest neighbour
 algorithm that builds topology network}
 
 \item{plot}{should the neighbourhood be plotted}
 
 \item{accuracy}{logical should accuracy be calculated based on randomForest algorithm}
+
+\item{disjoint}{if default settings generate error occuring to disjoint
+subgraphs it means, that in some places points or polygons are to disjoint to
+generate one connected graph. Use disjoint = T to enforce that one graph will
+be created. This is a slower option.}
+
+\item{queen}{if TRUE, a single shared boundary point meets the contiguity condition,
+if FALSE, more than one shared point is required; note that more than one shared boundary
+point does not necessarily mean a shared boundary line}
 }
 \value{
 vector of numbers representing regions to whicheach element
@@ -63,11 +61,6 @@ algorithm that maximizes their modularity.
 }
 \examples{
 data("realEstate")
-realEstate <- points_ds(realEstate,k = 5, )
-\dontrun{
-library(dismo)
-pol <- voronoi(xy = as(realEstate,'Spatial'))
-qtm(pol, "class")
-}
+realEstate <- points_ds(realEstate, k = 5)
 
 }

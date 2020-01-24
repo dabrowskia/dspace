@@ -36,20 +36,13 @@
 #' 
 #' @examples
 #' data("realEstate")
-#' realEstate <- points_ds(realEstate,k = 5, )
-#' \dontrun{
-#' library(dismo)
-#' pol <- voronoi(xy = as(realEstate,'Spatial'))
-#' qtm(pol, "class")
-#' }
+#' realEstate <- points_ds(realEstate, k = 5)
 #' 
 points_ds <- function(x,
                       k = 2,
-                      queen = TRUE, #is this needed?
                       data = -grep(names(x),pattern = '^geom'),
                       method = "euclidean",
                       style = "B",
-                      disjoint = FALSE, #is this needed for points?
                       n.neigh = 8,
                       plot = TRUE,
                       accuracy = TRUE)
@@ -61,7 +54,7 @@ points_ds <- function(x,
     n.neigh = n.neigh,
     plot = plot
   )
-  #Building network/grap representation out of neghbour representation
+  #Building network/graph representation out of neghbour representation
   fg <-
     build_graph(
       x = res[["x"]],
@@ -76,7 +69,7 @@ points_ds <- function(x,
   if (accuracy == TRUE)
   {
     data.to.accu <-
-      res[["x"]]@data %>%
+      sf::st_set_geometry(res[["x"]],NULL) %>%
       dplyr::select(data) %>%
       dplyr::mutate(class = classes)
     accu <- accuracy_ds(x = data.to.accu)

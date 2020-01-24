@@ -76,7 +76,7 @@ polygon_ds <- function(x,
   if (accuracy == TRUE)
   {
     data.to.accu <-
-      res[["x"]]@data %>%
+      sf::st_set_geometry(res[["x"]],NULL) %>%
       dplyr::select(data) %>%
       dplyr::mutate(class = classes)
     accu <- accuracy_ds(x = data.to.accu)

@@ -1,31 +1,20 @@
 context("polygon_ds")
 test_that("classification of scarse data",
           {
-            data("World",package = "tmap")
-            World <- World[(!is.na(World$life_exp)),]
-            polygon_division <- polygon_ds(World,
-                                           data=9:10,
-                                           k=5,
-                                           style="B",
-                                           disjoint = TRUE)
+            data("socioGrid")
+            socioGrid$class <- polygon_ds(socioGrid, k = 7,
+               disjoint = TRUE, plot = TRUE, accuracy = FALSE)
+            
             expect_equal(
-              head(polygon_division),
-              c(1, 3, 4, 1, 1, 3))
+              head(socioGrid$class),
+              c(3, 3, 3, 3, 3, 3))
           })
 context("points_ds")
 test_that("classification of point data",
           {
-            data("quakes")
-            quakes <- SpatialPointsDataFrame(
-              cbind(
-                quakes$lat, quakes$long),
-              quakes)
-            point_division <- points_ds(
-              quakes,
-              data=3:4,
-              k=5,
-              style="B")
+            data("realEstate")
+            realEstate$class <- points_ds(realEstate, k = 5, accuracy = FALSE)
             expect_equal(
-              head(point_division),
-              c(4, 4, 5, 1, 4, 1))
+              head(realEstate$class),
+              c(4, 4, 4, 4, 4, 4))
           })

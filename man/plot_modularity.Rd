@@ -17,7 +17,7 @@ plots the modularity statistic against the number of clusters.
 }
 \examples{
 data("quakes")
-quakes <- SpatialPointsDataFrame(cbind( quakes$lat, quakes$long), quakes)
-quakes.modularity <- find_no_clusters(quakes, polygon = FALSE, data = 3:4)
-plot_modularity(quakes.modularity)
+data("socioGrid")
+modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)
+plot_modularity(modularity)
 }
