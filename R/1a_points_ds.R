@@ -49,7 +49,7 @@ points_ds <- function(x,
                       data = -grep(names(x),pattern = '^geom'),
                       method = "euclidean",
                       style = "B",
-                      disjoint = FALSE,
+                      disjoint = FALSE, #is this needed for points?
                       n.neigh = 8,
                       plot = TRUE,
                       accuracy = TRUE)
