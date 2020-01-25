@@ -62,8 +62,12 @@ are the degree of similarity between those nodes. Communities are created using 
 algorithm that maximizes their modularity.
 }
 \examples{
-data("quakes")
-quakes <- sp::SpatialPointsDataFrame(cbind(quakes$lat, quakes$long), quakes)
-point_division <- points_ds(quakes, data = 3:4, k = 5, style = "B")
+data("realEstate")
+realEstate <- points_ds(realEstate,k = 5, )
+\dontrun{
+library(dismo)
+pol <- voronoi(xy = as(realEstate,'Spatial'))
+qtm(pol, "class")
+}
 
 }

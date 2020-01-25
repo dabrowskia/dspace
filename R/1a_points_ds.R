@@ -34,19 +34,22 @@
 #' 
 #' @export
 #' 
-#' 
 #' @examples
-#' data("quakes")
-#' quakes <- sp::SpatialPointsDataFrame(cbind(quakes$lat, quakes$long), quakes)
-#' point_division <- points_ds(quakes, data = 3:4, k = 5, style = "B")
-#'
+#' data("realEstate")
+#' realEstate <- points_ds(realEstate,k = 5, )
+#' \dontrun{
+#' library(dismo)
+#' pol <- voronoi(xy = as(realEstate,'Spatial'))
+#' qtm(pol, "class")
+#' }
+#' 
 points_ds <- function(x,
                       k = 2,
                       queen = TRUE, #is this needed?
                       data = -grep(names(x),pattern = '^geom'),
                       method = "euclidean",
                       style = "B",
-                      disjoint = FALSE,
+                      disjoint = FALSE, #is this needed for points?
                       n.neigh = 8,
                       plot = TRUE,
                       accuracy = TRUE)
