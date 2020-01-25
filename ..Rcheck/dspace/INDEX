@@ -1,9 +1,0 @@
-accuracy_ds             accuracy_ds
-build_graph             build_graph
-find_no_clusters        find_no_clusters
-part_communities        part_communities
-plot_modularity         plot_modularity
-points_ds               points_ds
-polygon_ds              polygon_ds
-prepare_points          prepare_points
-prepare_polygons        prepare_polygon

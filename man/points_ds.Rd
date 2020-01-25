@@ -40,15 +40,6 @@ algorithm that builds topology network}
 \item{plot}{should the neighbourhood be plotted}
 
 \item{accuracy}{logical should accuracy be calculated based on randomForest algorithm}
-
-\item{disjoint}{if default settings generate error occuring to disjoint
-subgraphs it means, that in some places points or polygons are to disjoint to
-generate one connected graph. Use disjoint = T to enforce that one graph will
-be created. This is a slower option.}
-
-\item{queen}{if TRUE, a single shared boundary point meets the contiguity condition,
-if FALSE, more than one shared point is required; note that more than one shared boundary
-point does not necessarily mean a shared boundary line}
 }
 \value{
 vector of numbers representing regions to whicheach element

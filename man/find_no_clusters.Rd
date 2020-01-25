@@ -4,17 +4,7 @@
 \alias{find_no_clusters}
 \title{find_no_clusters}
 \usage{
-find_no_clusters(
-  x,
-  polygon = TRUE,
-  queen = TRUE,
-  method = "euclidean",
-  data = -grep(names(x), pattern = "^geom"),
-  style = "B",
-  n.neigh = 8,
-  disjoint = FALSE,
-  range = 2:30
-)
+data(realEstate)
 }
 \arguments{
 \item{x}{spatial data for regionalization}

@@ -25,7 +25,8 @@ build_graph <- function(x, data, x.nb,
     dplyr::filter(value != 0)
 
   names(data.for.graph) <- c("from", "to", "weight")
-  data.graph <- igraph::graph_from_data_frame(data.for.graph) %>% igraph::as.undirected()
+  data.graph <- igraph::graph_from_data_frame(data.for.graph) %>%
+    igraph::as.undirected()
   data.graph <-
     igraph::subgraph.edges(data.graph, which(igraph::E(data.graph)$weight != 0), delete.vertices = FALSE)
   igraph::E(data.graph)$weight <-

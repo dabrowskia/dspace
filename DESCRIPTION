@@ -24,8 +24,12 @@ Imports:
     dplyr,
     geosphere,
     ggplot2,
-    caret,
-    magrittr
+    magrittr,
+    sf,
+    spdep,
+    reshape2,
+    lattice,
+    igraph
 Suggests: 
     testthat,
     knitr,

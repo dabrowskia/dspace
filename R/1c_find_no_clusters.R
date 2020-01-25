@@ -34,16 +34,15 @@
 #' plot_modularity(realEstate.modularity)
 #' 
 #' 
-find_no_clusters <-
-  function(x,
-           polygon = TRUE,
-           queen = TRUE,
-           method = "euclidean",
-           data = -grep(names(x),pattern = '^geom'),
-           style = "B",
-           n.neigh = 8,
-           disjoint = FALSE,
-           range = 2:30)
+find_no_clusters <- function(x,
+                             polygon = TRUE,
+                             queen = TRUE,
+                             method = "euclidean",
+                             data = -grep(names(x),pattern = '^geom'),
+                             style = "B",
+                             n.neigh = 8,
+                             disjoint = FALSE,
+                             range = 2:30)
   {
     if (polygon == TRUE) #Function should automatically distinguish if the data is point or polygon
     {

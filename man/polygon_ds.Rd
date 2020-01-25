@@ -74,5 +74,4 @@ modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)
 plot_modularity(modularity)
 socioGrid$class <- polygon_ds(socioGrid, k = 7,
     disjoint = TRUE, plot = TRUE)
-tmap::qtm(socioGrid, "class")
 }

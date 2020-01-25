@@ -39,7 +39,6 @@
 #' plot_modularity(modularity)
 #' socioGrid$class <- polygon_ds(socioGrid, k = 7,
 #'     disjoint = TRUE, plot = TRUE)
-#' tmap::qtm(socioGrid, "class")
 
 polygon_ds <- function(x,
                        k = 2,

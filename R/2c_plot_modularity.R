@@ -7,7 +7,6 @@
 #' @return a plot of modularity values calculated for a given range of clusters
 #' @export
 #' @examples 
-#' data("quakes")
 #' data("socioGrid")
 #' modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)
 #' plot_modularity(modularity)
