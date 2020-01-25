@@ -17,17 +17,12 @@ License: GPL-2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
+Depends:
+    R (>= 2.10)
 Imports: 
-    spgwr,
+    caret,
     dplyr,
-    raster,
-    sf,
-    igraph,
-    spdep,
-    rgdal,
-    reshape2,
     geosphere,
-    tmap,
     ggplot2,
     caret,
     magrittr

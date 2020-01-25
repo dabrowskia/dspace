@@ -33,7 +33,6 @@
 #' realEstate.modularity <- find_no_clusters(realEstate, polygon = FALSE)
 #' plot_modularity(realEstate.modularity)
 #' 
-#' data()
 #' 
 find_no_clusters <-
   function(x,

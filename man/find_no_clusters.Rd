@@ -4,7 +4,17 @@
 \alias{find_no_clusters}
 \title{find_no_clusters}
 \usage{
-data(realEstate)
+find_no_clusters(
+  x,
+  polygon = TRUE,
+  queen = TRUE,
+  method = "euclidean",
+  data = -grep(names(x), pattern = "^geom"),
+  style = "B",
+  n.neigh = 8,
+  disjoint = FALSE,
+  range = 2:30
+)
 }
 \arguments{
 \item{x}{spatial data for regionalization}
@@ -49,6 +59,5 @@ data(realEstate)
 realEstate.modularity <- find_no_clusters(realEstate, polygon = FALSE)
 plot_modularity(realEstate.modularity)
 
-data()
 
 }
