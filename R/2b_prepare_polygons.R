@@ -19,11 +19,11 @@ prepare_polygons <- function(x, queen,
   if (in.class == "sf")
   {
     x.type = class(x$geom)[1]
-    x <- sf::as_Spatial(x)
+    x <- methods::as(x, "Spatial")
   }
   if ((in.class == "sf" &
        !x.type %in% c("sfc_MULTIPOLYGON", "sfc_POLYGON")) |
-      !in.class %in% c("sf", "SpatialPolygonsDataFrame"))
+       !in.class %in% c("sf", "SpatialPolygonsDataFrame"))
   {
     stop("x not a Polygon layer")
   }
@@ -43,7 +43,7 @@ prepare_polygons <- function(x, queen,
 
   if (plot == TRUE)
   {
-    plot(x)
+    sp::plot(x)
     plot(x.nb, coords, add = TRUE)
   }
   res <- list()

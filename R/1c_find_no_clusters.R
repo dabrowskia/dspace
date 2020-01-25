@@ -27,13 +27,11 @@
 #'
 #' @return A vector of modularity measures for given range of divisions
 #' @export
-#' @usage data(realEstate)
 #' @examples 
 #' data(realEstate)
 #' realEstate.modularity <- find_no_clusters(realEstate, polygon = FALSE)
 #' plot_modularity(realEstate.modularity)
 #' 
-#' data()
 #' 
 find_no_clusters <-
   function(x,
