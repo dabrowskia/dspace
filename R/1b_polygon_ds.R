@@ -32,13 +32,13 @@
 #' 
 #' @return vector of numbers representing regions to whicheach element
 #' @export
-#' 
-#' @examples
+#' @example
 #' data("socioGrid")
 #' modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)
 #' plot_modularity(modularity)
 #' socioGrid$class <- polygon_ds(socioGrid, k = 7,
 #'     disjoint = TRUE, plot = TRUE)
+
 
 polygon_ds <- function(x,
                        k = 2,

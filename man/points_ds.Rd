@@ -52,6 +52,5 @@ algorithm that maximizes their modularity.
 }
 \examples{
 data("realEstate")
-realEstate <- points_ds(realEstate, k = 5)
-
+realEstate$class <- points_ds(realEstate, k = 5, accuracy = FALSE)
 }

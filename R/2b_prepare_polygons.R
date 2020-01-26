@@ -28,7 +28,9 @@ prepare_polygons <- function(x, queen,
   # }
 
   # x@data[,data]<-apply(x@data[,data],2,scale)
+  options(warn=-1)
   coords <- sf::st_centroid(x)$geometry
+  options(warn=0)
   x.nb <- spdep::poly2nb(x, queen = queen)
   if (disjoint == TRUE)
   {

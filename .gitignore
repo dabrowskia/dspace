@@ -4,3 +4,4 @@
 .Ruserdata
 ds.Rproj
 inst/doc
+packrat/lib*/

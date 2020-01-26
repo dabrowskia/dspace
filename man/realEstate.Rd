@@ -4,7 +4,7 @@
 \name{realEstate}
 \alias{realEstate}
 \title{Real Estate dataset}
-\format{An object of class \code{sf} (inherits from \code{data.frame}) with 3496 rows and 22 columns.}
+\format{An object of class \code{sf} (inherits from \code{data.frame}) with 250 rows and 6 columns.}
 \usage{
 data(realEstate)
 }

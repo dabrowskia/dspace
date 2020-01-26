@@ -7,7 +7,7 @@ test_that("classification of scarse data",
             
             expect_equal(
               head(socioGrid$class),
-              c(3, 3, 3, 3, 3, 3))
+              c(6, 5, 3, 1, 2, 6))
           })
 context("points_ds")
 test_that("classification of point data",
@@ -16,5 +16,5 @@ test_that("classification of point data",
             realEstate$class <- points_ds(realEstate, k = 5, accuracy = FALSE)
             expect_equal(
               head(realEstate$class),
-              c(4, 4, 4, 4, 4, 4))
+              c(1, 5, 4, 2, 4, 4))
           })

@@ -6,3 +6,5 @@
 
 ^README\.Rmd$
 ^\.travis\.yml$
+^packrat/
+^\.Rprofile$

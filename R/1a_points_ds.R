@@ -28,10 +28,10 @@
 #' 
 #' @export
 #' 
-#' @examples
+#' @examples 
 #' data("realEstate")
-#' realEstate <- points_ds(realEstate, k = 5)
-#' 
+#' realEstate$class <- points_ds(realEstate, k = 5, accuracy = FALSE)
+
 points_ds <- function(x,
                       k = 2,
                       data = -grep(names(x), pattern = '^geom'),
