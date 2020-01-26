@@ -15,7 +15,7 @@ build_graph <- function(x, data, x.nb,
 {
   
   #Calculating similarity between the nodes
-  lcosts <- spdep::nbcosts(method = method, x.nb, sf::st_set_geometry(x[,data],NULL))
+  lcosts <- spdep::nbcosts(method = method, x.nb, sf::st_drop_geometry(x[, data]))
   nb.w <- spdep::nb2listw(x.nb, lcosts, style = style)
   t <- spdep::listw2mat(nb.w)
   colnames(t) <- rownames(t)

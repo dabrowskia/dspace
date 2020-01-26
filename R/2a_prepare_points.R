@@ -13,27 +13,25 @@ prepare_points <- function(x,
                            n.neigh,
                            plot)
 {
-  #Ensuring that points are of appropraite type and sp class
-  in.class <- class(x)[1]
-  if (in.class != "sf") stop("object is not of class 'sf'")
+  #Ensuring that points are of appropraite type and sf class
+  if (!inherits(x, "sf")) stop("object is not of class 'sf'")
   
-  x.type <-class(x$geometry)[1]
-  if(x.type != "sfc_POINT") stop("object is not of type 'POINT'")
+  coords <- sf::st_geometry(x)
+  
+  if(!inherits(coords, "sfc_POINT")) stop("object is not of type 'POINT'")
   
   #Convering to neghbour representation
-  coords <- x$geometry
   x.knn <- spdep::knearneigh(coords, k = n.neigh)
-  x.knn <- spdep::knearneigh(x$geometry, k = n.neigh)
+  # x.knn <- spdep::knearneigh(x$geometry, k = n.neigh)
   x.nb <- spdep::knn2nb(x.knn)
-  gn <- spdep::gabrielneigh(x$geometry, nnmult = 3)
+  gn <- spdep::gabrielneigh(coords, nnmult = 3)
   g.nb <- spdep::graph2nb(gn)
   x.nb <- spdep::union.nb(x.nb, g.nb)
 
-
-  if (plot == TRUE) #this should plot the neighbourhoods
-  {
-    plot(x[1], lwd = 2)
-    plot(x.nb, x$geometry, add = TRUE)
+  #this should plot the neighbourhoods
+  if (plot == TRUE) {
+    plot(coords, lwd = 2)
+    plot(x.nb, coords, add = TRUE)
   }
   res <- list()
   res[["x.nb"]] <- x.nb
