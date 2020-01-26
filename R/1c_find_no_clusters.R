@@ -26,7 +26,6 @@
 #'   numbers, the longer it will take to calculate plot
 #'
 #' @return A vector of modularity measures for given range of divisions
-#' @usage data(realEstate)
 #' @export
 #' @examples 
 #' data(realEstate)
