@@ -14,7 +14,7 @@
 #' @param method Character or function to declare distance method. If method is
 #'   character, method must be "mahalanobis" or "euclidean", "maximum",
 #'   "manhattan", "canberra", "binary" or "minkowisk". If method is one of
-#'   "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowisk",
+#'   "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski",
 #'   see dist for details, because this function is used to compute the distance.
 #'   If method is set to "mahalanobis", the mahalanobis distance is computed between
 #'   neighbour points. If method is a function, this function is used to compute
