@@ -18,3 +18,22 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(dspace)
 ```
+
+Dspace (divide space) is designed for spatial segmentation/clustering/regionalization of **point or polygon data of class 'sf'**. It uses igraph to build a topological network/graph connecting points or polygons centroids. The nodes of the graph are connected with their nearest neighbours based on defined criteria (eg. nearest neighbours or queen/rook neighbourhood - see...) and the wieght of the edge is calculated as similarity between two nodes. To find network communities which represent regions/spatial clusters/submaretes it uses fast greedy algorithm (add citation) .
+
+This package has been developed mainly for **real estate market segmentation (submarket delimitation)** but can be easily adapted to any variety of spatial data.
+
+The package uses following functions:
+
+ * points_ds - which devides point data into spatially coherent regions,
+ * polygons_ds - which devides polygon data into spatially coherent regions,
+ * find_no_clusters - which analyzes a range of divisions (by default from 2 to 30 regions) to find the one with highest modularity value (add citation)
+ * plot_modularity - which visualizes the result of find_no_clusters to find the best number of clusters to divide your data
+
+#Where to start
+```
+data(realEstate)
+realEstate.modularity <- regionalize(realEstate, polygon = FALSE)
+plot_modularity(realEstate.modularity)
+realEstate$class <- points_ds(realEstate, k = 5, accuracy = FALSE)
+```
