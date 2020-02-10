@@ -26,7 +26,6 @@
 #' 
 #' @return vector of numbers representing regions to whicheach element
 #' 
-#' @export
 #' 
 #' @examples 
 #' data("realEstate")

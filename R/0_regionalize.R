@@ -1,10 +1,11 @@
-#' polygon_ds
-#'  
-#' Creates a vector of community assignment based on neighbouring polygons. It
-#' creates a topological structure in which nodes represent polygons and the edge
-#' is the similarity between nodes. Communities are created using fast greedy
+#' regionalize
+#'
+#' Creates a vector of community assignment based on neighbouring data. It
+#' creates a topological structure in which nodes represent points or centroids of polygons
+#' and the edge represents the similarity between nodes.
+#' Communities are created using fast greedy
 #' algorithm that maximizes their modularity.
-#' 
+#'
 #' @param x point or polygon shapefile data;
 #' @param k number of clusters;
 #' @param n.neigh number of neighbours considered in the k-nearest neighbour
@@ -29,56 +30,53 @@
 #' @param queen if TRUE, a single shared boundary point meets the contiguity condition,
 #' if FALSE, more than one shared point is required; note that more than one shared boundary
 #' point does not necessarily mean a shared boundary line
-#' 
-#' @return vector of numbers representing regions to whicheach element
-#' @example
+#'
+#' @return vector of numbers representing regions to which each element
+#' @export
+#' @examples 
 #' data("socioGrid")
 #' modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)
 #' plot_modularity(modularity)
-#' socioGrid$class <- polygon_ds(socioGrid, k = 7,
+#' socioGrid$class <- regionalize(socioGrid, k = 7,
 #'     disjoint = TRUE, plot = TRUE)
-
-
-polygon_ds <- function(x,
-                       k = 2,
-                       queen = TRUE,
-                       data = -grep(names(x), pattern = '^geom'),
-                       method = "euclidean",
-                       style = "B",
-                       disjoint = FALSE,
-                       n.neigh = 8,
-                       plot = TRUE,
-                       accuracy = TRUE)
-{
-  #Prepare the polygons for further analysis by ckecking its class and converting to point neghbourhood representations 
+#'     
+#' data("realEstate")
+#' realEstate$class <- regionalize(realEstate, k = 5, accuracy = FALSE)
+regionalize <- function(x,
+                        k = 2,
+                        data = -grep(names(x), pattern = '^geom'),
+                        method = "euclidean",
+                        style = "B",
+                        n.neigh = 8,
+                        plot = TRUE,
+                        queen = TRUE,
+                        disjoint = FALSE,
+                        accuracy = TRUE) {
+  geometry <- sf::st_geometry(x)
   
-  res <- prepare_polygons(
-    x = x,
-    queen = queen,
-    method = method,
-    disjoint = disjoint,
-    n.neigh = n.neigh,
-    plot = plot
-  )
-
-  fg.graph <-
-    build_graph(
-      x = res[["x"]],
-      x.nb = res[["x.nb"]],
-      data = data,
-      method = method,
-      style = style
+  if(inherits(geometry, "sfc_POINT")){
+    points_ds(
+      x,
+      k,
+      data,
+      method,
+      style,
+      n.neigh,
+      plot ,
+      accuracy
     )
-
-  classes <- part_communities(fg = fg.graph[["fg"]], k = k)
-  if (accuracy == TRUE)
-  {
-    data.to.accu <-
-      sf::st_set_geometry(res[["x"]],NULL) %>%
-      dplyr::select(data) %>%
-      dplyr::mutate(class = classes)
-    accu <- accuracy_ds(x = data.to.accu)
-    print(paste("Accuracy:", accu))
+  } else if(inherits(geometry, "sfc_POLYGON")){
+    polygon_ds(
+      x,
+      k,
+      queen ,
+      data ,
+      method,
+      style,
+      disjoint,
+      n.neigh,
+      plot,
+      accuracy
+    )
   }
-  classes
 }
