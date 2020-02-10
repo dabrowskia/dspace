@@ -33,12 +33,15 @@
 #'
 #' @return vector of numbers representing regions to which each element
 #' @export
-#' @example
+#' @examples 
 #' data("socioGrid")
 #' modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)
 #' plot_modularity(modularity)
 #' socioGrid$class <- regionalize(socioGrid, k = 7,
 #'     disjoint = TRUE, plot = TRUE)
+#'     
+#' data("realEstate")
+#' realEstate$class <- regionalize(realEstate, k = 5, accuracy = FALSE)
 regionalize <- function(x,
                         k = 2,
                         data = -grep(names(x), pattern = '^geom'),

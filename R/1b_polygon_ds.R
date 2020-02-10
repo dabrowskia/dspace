@@ -31,7 +31,6 @@
 #' point does not necessarily mean a shared boundary line
 #' 
 #' @return vector of numbers representing regions to whicheach element
-#' @export
 #' @example
 #' data("socioGrid")
 #' modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)

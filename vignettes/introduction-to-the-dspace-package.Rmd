@@ -25,15 +25,30 @@ This package has been developed mainly for **real estate market segmentation (su
 
 The package uses following functions:
 
- * points_ds - which devides point data into spatially coherent regions,
- * polygons_ds - which devides polygon data into spatially coherent regions,
+ * regionalize - which devides data regardles of geometry type (point/polygon) into spatially coheren regions,
+ * points_ds - which devides point data into spatially coherent regions, #function deprecated
+ * polygons_ds - which devides polygon data into spatially coherent regions, #function deprecated
  * find_no_clusters - which analyzes a range of divisions (by default from 2 to 30 regions) to find the one with highest modularity value (add citation)
  * plot_modularity - which visualizes the result of find_no_clusters to find the best number of clusters to divide your data
 
-#Where to start
+# Where to start
+
 ```
 data(realEstate)
 realEstate.modularity <- regionalize(realEstate, polygon = FALSE)
 plot_modularity(realEstate.modularity)
 realEstate$class <- points_ds(realEstate, k = 5, accuracy = FALSE)
 ```
+
+# Overview of the algorithm
+Dspace works with point or polygon datasets to regionalize - divide space into spatially coherent regions/clusters. The mechanism behind the algorithm uses network communities for data fixed in geographic 2-deimnsional space. If the input dataset are points, then based on their position an graph network is beeing build that can connect points based on their number of nearest neighbours (in future development other means of building network will be implemented). If polygons are the input data then graph can be built based on the queen/rook neighbourhood of the polygons.
+
+When a graph connecting all of the neighbouring points/polygons is created  a similarity metric is calculated between the neighbouring objects. This similarity can be calulated based on different distance metrics: "mahalanobis" or "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowisk". If method is one of "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski", see dist for details, because this function is used to compute the distance. If method is set to "mahalanobis", the mahalanobis distance is computed between neighbour points. If method is a function, this function is used to compute the distance.
+
+Based on  a graph with weights assigned to the edges between the objects (points and polygons) a fast greedy algorithm is used to determine spatial clusters (communities in a graph).
+ 
+# Finding number of clusters
+To find appropriate number of clusters a `find_no_clusters` function has been created. It creates a rapid division of data into a defined number of regions (by default from 2 to 30 regions) and caluclates for each division into communities their modularity metric (**needs reference for modularity**). By default the function returns a named vector which can be applied to the function `plot_modularity` that uses ggplot to visulaize changes in modularity for each division.
+
+# Assessing the division into clusters
+For assessing the goodness of division while using `regionalize` function (or `point_ds`/`polygon_ds`) an argument `accuracy` can be set to `TRUE`. While it is set to `TRUE`, a randomForest model is being trained to establish how much the division of the regions could be implied based on the variables from the dataset itself without taking into account their position in geographical space. **this absolutly needs refinement**
