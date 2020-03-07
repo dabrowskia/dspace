@@ -38,9 +38,9 @@ library(dspace)
 
 ```{r}
 data(realEstate)
-realEstate.modularity <- regionalize(realEstate, polygon = FALSE)
-plot_modularity(realEstate.modularity)
-realEstate$class <- points_ds(realEstate, k = 5, accuracy = FALSE)
+modularity <- find_no_clusters(realEstate,polygon = F)
+plot(modularity)
+realEstate$class <- regionalize(realEstate, k = 5, accuracy = FALSE)
 ```
 
 # Overview of the algorithm

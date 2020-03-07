@@ -62,3 +62,13 @@ and the edge represents the similarity between nodes.
 Communities are created using fast greedy
 algorithm that maximizes their modularity.
 }
+\examples{
+data("socioGrid")
+modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)
+plot_modularity(modularity)
+socioGrid$class <- regionalize(socioGrid, k = 7,
+    disjoint = TRUE, plot = TRUE)
+    
+data("realEstate")
+realEstate$class <- regionalize(realEstate, k = 5, accuracy = FALSE)
+}

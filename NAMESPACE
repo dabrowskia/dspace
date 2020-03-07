@@ -3,7 +3,5 @@
 export("%>%")
 export(find_no_clusters)
 export(plot_modularity)
-export(points_ds)
-export(polygon_ds)
 export(regionalize)
 importFrom(magrittr,"%>%")

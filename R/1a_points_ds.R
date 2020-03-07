@@ -25,11 +25,7 @@
 #' @param accuracy logical should accuracy be calculated based on randomForest algorithm
 #' 
 #' @return vector of numbers representing regions to whicheach element
-#' 
-#' 
-#' @examples 
-#' data("realEstate")
-#' realEstate$class <- points_ds(realEstate, k = 5, accuracy = FALSE)
+
 
 points_ds <- function(x,
                       k = 2,

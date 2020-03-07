@@ -50,7 +50,3 @@ on a topological network structure where points represent nodes and the edges
 are the degree of similarity between those nodes. Communities are created using fast greedy
 algorithm that maximizes their modularity.
 }
-\examples{
-data("realEstate")
-realEstate$class <- points_ds(realEstate, k = 5, accuracy = FALSE)
-}
