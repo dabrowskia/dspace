@@ -4,12 +4,12 @@
 \alias{part_communities}
 \title{part_communities}
 \usage{
-part_communities(k, fg)
+part_communities(k, fg.graph)
 }
 \arguments{
 \item{k}{number of clusters to create regionalization}
 
-\item{fg}{hierarchical community object created from \code{build_graph()}}
+\item{fg.graph}{hierarchical community object created from \code{build_graph()}}
 }
 \value{
 a vector of classes - numbers of regions that particular

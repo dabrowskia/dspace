@@ -3,17 +3,17 @@
 #' Divides graph into defined number of regions
 #'
 #' @param k number of clusters to create regionalization
-#' @param fg hierarchical community object created from `build_graph()`
+#' @param fg.graph hierarchical community object created from `build_graph()`
 #'
 #' @return a vector of classes - numbers of regions that particular 
 #' polygon or point are classified to
-part_communities <- function(k, fg)
+part_communities <- function(k, fg.graph)
 {
-  classes <- igraph::cutat(fg, no = k)
-  clusters.fg <- igraph::membership(fg)
-  clusters.fg <- data.frame(ID = as.numeric(names(igraph::membership(fg))),
+  classes <- igraph::cutat(fg.graph, no = k)
+  membership <- igraph::membership(fg.graph)
+  membership <- data.frame(ID = as.numeric(names(igraph::membership(fg.graph))),
                             class = classes)
-  clusters.fg <- clusters.fg[order(clusters.fg$ID), ]
-  clusters.fg$class
+  membership <- membership[order(membership$ID), ]
+  membership$class
 
 }

@@ -48,7 +48,7 @@ points_ds <- function(x,
     plot = plot
   )
   #Building network/graph representation out of neighbor representation
-  fg <- build_graph(
+  fg.graph <- build_graph(
       x = res[["x"]],
       x.nb = res[["x.nb"]],
       data = data,
@@ -56,10 +56,11 @@ points_ds <- function(x,
       style = style
   )
   #Dividing the points based on their graph representation using fast greedy algorithm
-  classes <- part_communities(fg = fg[["fg"]], k = k)
+  classes <- part_communities(fg.graph = fg.graph[["fg"]], k = k)
   #Calculating the accuracy based on random forest algorithm for evaluating suitability of the partition
   if (explain == TRUE)
   {
+    data <- names(x)[data]
     data.to.accu <-
       sf::st_drop_geometry(res[["x"]]) %>%
       dplyr::select(data) %>%

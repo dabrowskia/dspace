@@ -69,7 +69,7 @@ polygon_ds <- function(x,
       style = style
     )
 
-  classes <- part_communities(fg = fg.graph[["fg"]], k = k)
+  classes <- part_communities(fg.graph = fg.graph[["fg"]], k = k)
   if (explain == TRUE)
   {
     data <- names(x)[data]

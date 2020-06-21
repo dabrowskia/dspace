@@ -2,11 +2,11 @@
 #'
 #' Creates fastgreedy community graph for extracting regions
 #'
-#' @param x polygon or point data from wich neighbourhood object will be created
+#' @param x polygon or point data from witch neighborhood object will be created
 #' @param data data frame to build weights between polygons/points
-#' @param x.nb neighbourhood object created by prepare_points() or prepare_polygons()
-#' @param method method to calculate similarity/distance betweem neighbouring points or polygons
-#' @param style style of neighbourhood (see `spdep::nb2listw``)
+#' @param x.nb neighborhood object created by prepare_points() or prepare_polygons()
+#' @param method method to calculate similarity/distance between neighboring points or polygons
+#' @param style style of neighborhood (see `spdep::nb2listw``)
 #'
 #' @return a list containing community object ("fg") and graph object ("graph")
 #' 
@@ -15,12 +15,12 @@ build_graph <- function(x, data, x.nb,
 {
   
   #Calculating similarity between the nodes
-  lcosts <- spdep::nbcosts(method = method, x.nb, sf::st_drop_geometry(x[, data]))
-  nb.w <- spdep::nb2listw(x.nb, lcosts, style = style)
-  t <- spdep::listw2mat(nb.w)
-  colnames(t) <- rownames(t)
+  cost <- spdep::nbcosts(method = method, x.nb, sf::st_drop_geometry(x[, data]))
+  nb.w <- spdep::nb2listw(x.nb, cost, style = style)
+  mat <- spdep::listw2mat(nb.w)
+  colnames(mat) <- rownames(mat)
   value <- NULL
-  data.for.graph <- t %>%
+  data.for.graph <- mat %>%
     reshape2::melt(value.name = "value") %>%
     dplyr::filter(value != 0)
 

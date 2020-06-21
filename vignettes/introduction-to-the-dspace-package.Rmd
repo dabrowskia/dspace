@@ -30,7 +30,7 @@ The package uses following functions:
  * `find_no_clusters()` - which analyzes a range of divisions (by default from 2 to 30 regions) to find the one with highest modularity value (add citation)
  * `plot_modularity()` - which visualizes the result of find_no_clusters to find the best number of clusters to divide your data
 
-![Main functions and data flow](../images/dspace.png)
+![Main functions and data flow](images/dspace.png)
 
 
 # Where to start
