@@ -3,7 +3,6 @@
 #' Helps identify how many regions should be divided by analyzing the changes in modularity value
 #'
 #' @param x spatial data for regionalization
-#' @param polygon logical if the data is polygon or point
 #' @param queen  if data is polygon and without disjoint polygons, should the
 #'   neighbourhood be treated by queen topology or rook topology
 #' @param method Character or function to declare distance method. If method
@@ -34,7 +33,6 @@
 #' 
 #' 
 find_no_clusters <- function(x,
-                             polygon = TRUE,
                              queen = TRUE,
                              method = "euclidean",
                              data = -grep(names(x), pattern = '^geom'),
@@ -43,7 +41,9 @@ find_no_clusters <- function(x,
                              disjoint = FALSE,
                              range = 2:30)
   {
-    if (polygon == TRUE) #Function should automatically distinguish if the data is point or polygon
+  geometry <- sf::st_geometry(x)
+  
+    if (inherits(geometry, "sfc_POLYGON")) 
     {
       res <- prepare_polygons(
         x = x,
