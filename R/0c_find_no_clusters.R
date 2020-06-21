@@ -4,14 +4,14 @@
 #'
 #' @param x spatial data for regionalization
 #' @param queen  if data is polygon and without disjoint polygons, should the
-#'   neighbourhood be treated by queen topology or rook topology
+#'   neighborhood be treated by queen topology or rook topology
 #' @param method Character or function to declare distance method. If method
 #'   is character, method must be "mahalanobis" or "euclidean", "maximum",
 #'   "manhattan", "canberra", "binary" or "minkowisk". If method is one of
-#'   "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowisk",
+#'   "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski",
 #'   see dist for details, because this function as used to compute the
 #'   distance. If method="mahalanobis", the mahalanobis distance is computed
-#'   between neighbour areas. If method is a function, this function is used to
+#'   between neighbor areas. If method is a function, this function is used to
 #'   compute the distance.
 #' @param data data to analyze similarity between regions
 #' @param style style can take values “W”, “B”, “C”, “U”, “minmax” and “S”
@@ -74,7 +74,7 @@ find_no_clusters <- function(x,
     graph <- fg[["graph"]]
     fg <- fg[["fg"]]
     modularities <- c()
-    for (i in range)
+    for (i in range) 
     {
       z <- igraph::cutat(fg, no = i)
       modularities <- append(modularities, igraph::modularity(graph, z))

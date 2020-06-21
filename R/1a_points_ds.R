@@ -22,8 +22,12 @@
 #' @param style style can take values “W”, “B”, “C”, “U”, “minmax” and “S” (see spdep::nb2listw)
 
 #' @param plot should the neighborhood be plotted
-#' @param explain logical should accuracy be calculated based on randomForest algorithm
-#' 
+#' @param explain logical. If TRUE a machine learning (randomForest 
+#' using 5 fold cross validation) model is being constructed based 
+#' on the data provided for regionalization. The accuracy of this model
+#' explains how much of the regionalization can be attributed to the data
+#' and how much to the spatial distribution.
+#'  
 #' @return vector of numbers representing regions to which each element belongs to
 
 

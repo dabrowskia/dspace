@@ -25,7 +25,11 @@
 #'   to generate one connected graph. Use disjoint = T to enforce that one graph
 #'   will be created. This is a slower option.
 #' @param plot should the neighborhood be plotted
-#' @param explain logical should accuracy be calculated based on randomForest algorithm
+#' @param explain logical. If TRUE a machine learning (randomForest 
+#' using 5 fold cross validation) model is being constructed based 
+#' on the data provided for regionalization. The accuracy of this model
+#' explains how much of the regionalization can be attributed to the data
+#' and how much to the spatial distribution.
 #' @param queen if TRUE, a single shared boundary point meets the contiguity condition,
 #' if FALSE, more than one shared point is required; note that more than one shared boundary
 #' point does not necessarily mean a shared boundary line
