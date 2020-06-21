@@ -4,7 +4,9 @@
 \name{socioGrid}
 \alias{socioGrid}
 \title{Socio-economic dataset}
-\format{An object of class \code{sf} (inherits from \code{data.frame}) with 250 rows and 6 columns.}
+\format{
+An object of class \code{sf} (inherits from \code{data.frame}) with 250 rows and 6 columns.
+}
 \usage{
 data(socioGrid)
 }

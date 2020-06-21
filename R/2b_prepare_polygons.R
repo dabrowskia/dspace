@@ -23,7 +23,6 @@ prepare_polygons <- function(x, queen,
   x.nb <- spdep::poly2nb(x, queen = queen)
   if (disjoint == TRUE)
   {
-    # coords <- geosphere::centroid(x)
     x.knn <- spdep::knearneigh(coords, k = n.neigh)
     x.nb <- spdep::knn2nb(x.knn)
     gn <- spdep::gabrielneigh(coords, nnmult = 3)

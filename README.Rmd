@@ -15,6 +15,9 @@ knitr::opts_chunk$set(
 
 # dspace
 
+
+##Overview
+
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/dabrowskia/dspace.svg?branch=master)](https://travis-ci.org/dabrowskia/dspace)
 <!-- badges: end -->
@@ -35,11 +38,19 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("remotes")
 remotes::install_github("dabrowskia/dspace")
 ```
-## Example
 
-This is a basic example which shows you how to solve a common problem:
+### Development version
 
-```{r example}
+To get a bug fix or to use a feature from the development version, you can install the development version of dspace from GitHub.
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("dabrowskia/dspace")
+```
+
+## Usage
+
+```{r usage}
 library(dspace)
 data("socioGrid")
 modularity <- find_no_clusters(socioGrid, disjoint = TRUE, n.neigh = 6)
