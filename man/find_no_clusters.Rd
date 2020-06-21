@@ -6,7 +6,6 @@
 \usage{
 find_no_clusters(
   x,
-  polygon = TRUE,
   queen = TRUE,
   method = "euclidean",
   data = -grep(names(x), pattern = "^geom"),
@@ -18,8 +17,6 @@ find_no_clusters(
 }
 \arguments{
 \item{x}{spatial data for regionalization}
-
-\item{polygon}{logical if the data is polygon or point}
 
 \item{queen}{if data is polygon and without disjoint polygons, should the
 neighbourhood be treated by queen topology or rook topology}
@@ -37,15 +34,15 @@ compute the distance.}
 
 \item{style}{style can take values “W”, “B”, “C”, “U”, “minmax” and “S”}
 
-\item{n.neigh}{number of neighbours considered in the k-nearest neighbour
+\item{n.neigh}{number of neighbors considered in the k-nearest neighbor
 algorithm that builds topology}
 
-\item{disjoint}{if default settings generate error occuring to disjoint
+\item{disjoint}{if default settings generate error occurring to disjoint
 subgraphs it means, that in some places points or polygons are to disjoint
 to generate one connected graph. Use disjoint = T to enforce that one graph
 will be created. This is a slower option.}
 
-\item{range}{number of divisions to test the modularity. THe biger the
+\item{range}{number of divisions to test the modularity. THe bigger the
 numbers, the longer it will take to calculate plot}
 }
 \value{
@@ -56,7 +53,7 @@ Helps identify how many regions should be divided by analyzing the changes in mo
 }
 \examples{
 data(realEstate)
-realEstate.modularity <- find_no_clusters(realEstate, polygon = FALSE)
+realEstate.modularity <- find_no_clusters(realEstate)
 plot_modularity(realEstate.modularity)
 
 

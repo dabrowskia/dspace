@@ -1,14 +1,17 @@
 #' prepare_polygon
 #'
-#' Prepares polygons for regionalization - changes simple features to SpatialPolygonsDataFrame and calculates neighbourhood objects
+#' Prepares polygons for regionalization - changes simple features to 
+#' SpatialPolygonsDataFrame and calculates 
+#' neighborhood objects
 #'
 #' @param x point object
-#' @param queen logical should the wueen or the rook neighbourhood be calculated
+#' @param queen logical should the queen or the rook neighborhood be calculated
 #' @param method the distance/similarity to calculate
 #' @param disjoint logical if polygons are not continuous
-#' @param n.neigh at least how many neighbours should be taken into regionalization if disjoint==TRUE
-#' @param plot logical if TRUE a plot showing neighbourhoods is beeing presented
-#' @return neighbourhoods for coummunity finding
+#' @param n.neigh at least how many neighbors should be taken 
+#' into rationalization if disjoint==TRUE
+#' @param plot logical if TRUE a plot showing neighborhoods is being presented
+#' @return neighborhoods for community finding
 #'
 prepare_polygons <- function(x, queen,
                              method,

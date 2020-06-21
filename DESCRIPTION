@@ -22,11 +22,13 @@ Depends:
 Imports: 
     caret,
     dplyr,
+    geosphere,
     ggplot2,
     magrittr,
     sf,
     spdep,
     reshape2,
+    lattice,
     igraph
 Suggests: 
     testthat,

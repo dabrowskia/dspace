@@ -12,7 +12,8 @@ part_communities(k, fg)
 \item{fg}{hierarchical community object created from \code{build_graph()}}
 }
 \value{
-a vector of classes - numbers of regions that particular polygon or point are classified to
+a vector of classes - numbers of regions that particular
+polygon or point are classified to
 }
 \description{
 Divides graph into defined number of regions

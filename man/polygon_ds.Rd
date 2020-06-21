@@ -4,7 +4,7 @@
 \alias{polygon_ds}
 \title{polygon_ds
 
-Creates a vector of community assignment based on neighbouring polygons. It
+Creates a vector of community assignment based on neighboring polygons. It
 creates a topological structure in which nodes represent polygons and the edge
 is the similarity between nodes. Communities are created using fast greedy
 algorithm that maximizes their modularity.}
@@ -19,7 +19,7 @@ polygon_ds(
   disjoint = FALSE,
   n.neigh = 8,
   plot = TRUE,
-  accuracy = TRUE
+  explain = TRUE
 )
 }
 \arguments{
@@ -31,39 +31,39 @@ polygon_ds(
 if FALSE, more than one shared point is required; note that more than one shared boundary
 point does not necessarily mean a shared boundary line}
 
-\item{data}{atributes of the spatial data frame to calculate similarity or
+\item{data}{attributes of the spatial data frame to calculate similarity or
 distance measure;}
 
 \item{method}{Character or function to declare distance method. If method is
 character, method must be "mahalanobis" or "euclidean", "maximum",
-"manhattan", "canberra", "binary" or "minkowisk". If method is one of
-"euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowisk",
+"manhattan", "canberra", "binary" or "minkowski". If method is one of
+"euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski",
 see dist for details, because this function as used to compute the distance.
 If method="mahalanobis", the mahalanobis distance is computed between
-neighbour areas. If method is a function, this function is used to compute
+neighbor areas. If method is a function, this function is used to compute
 the distance.}
 
 \item{style}{style can take values “W”, “B”, “C”, “U”, “minmax” and “S”}
 
-\item{disjoint}{if default settings generate error occuring to disjoint
+\item{disjoint}{if default settings generate error occurring to disjoint
 subgraphs it means, that in some places points or polygons are to disjoint
 to generate one connected graph. Use disjoint = T to enforce that one graph
 will be created. This is a slower option.}
 
-\item{n.neigh}{number of neighbours considered in the k-nearest neighbour
+\item{n.neigh}{number of neighbors considered in the k-nearest neighbor
 algorithm that builds topology}
 
-\item{plot}{should the neighbourhood be plotted}
+\item{plot}{should the neighborhood be plotted}
 
-\item{accuracy}{logical should accuracy be calculated based on randomForest algorithm}
+\item{explain}{logical should accuracy be calculated based on randomForest algorithm}
 }
 \value{
-vector of numbers representing regions to whicheach element
+vector of numbers representing regions to which each element belongs to
 }
 \description{
 polygon_ds
 
-Creates a vector of community assignment based on neighbouring polygons. It
+Creates a vector of community assignment based on neighboring polygons. It
 creates a topological structure in which nodes represent polygons and the edge
 is the similarity between nodes. Communities are created using fast greedy
 algorithm that maximizes their modularity.

@@ -12,7 +12,7 @@ points_ds(
   style = "B",
   n.neigh = 8,
   plot = TRUE,
-  accuracy = TRUE
+  explain = TRUE
 )
 }
 \arguments{
@@ -20,32 +20,32 @@ points_ds(
 
 \item{k}{number of communities;}
 
-\item{data}{atributes of the spatial data frame to calculate similarity or
+\item{data}{attributes of the spatial data frame to calculate similarity or
 distance measure;}
 
 \item{method}{Character or function to declare distance method. If method is
 character, method must be "mahalanobis" or "euclidean", "maximum",
-"manhattan", "canberra", "binary" or "minkowisk". If method is one of
+"manhattan", "canberra", "binary" or "minkowski". If method is one of
 "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski",
 see dist for details, because this function is used to compute the distance.
 If method is set to "mahalanobis", the mahalanobis distance is computed between
-neighbour points. If method is a function, this function is used to compute
+neighbor points. If method is a function, this function is used to compute
 the distance.}
 
 \item{style}{style can take values “W”, “B”, “C”, “U”, “minmax” and “S” (see spdep::nb2listw)}
 
-\item{n.neigh}{number of neighbours considered in the k-nearest neighbour
+\item{n.neigh}{number of neighbors considered in the k-nearest neighbor
 algorithm that builds topology network}
 
-\item{plot}{should the neighbourhood be plotted}
+\item{plot}{should the neighborhood be plotted}
 
-\item{accuracy}{logical should accuracy be calculated based on randomForest algorithm}
+\item{explain}{logical should accuracy be calculated based on randomForest algorithm}
 }
 \value{
-vector of numbers representing regions to whicheach element
+vector of numbers representing regions to which each element belongs to
 }
 \description{
-Creates a vector of community assignment based on neighbouring points. It is based
+Creates a vector of community assignment based on neighboring points. It is based
 on a topological network structure where points represent nodes and the edges
 are the degree of similarity between those nodes. Communities are created using fast greedy
 algorithm that maximizes their modularity.

@@ -7,7 +7,7 @@
 accuracy_ds(x)
 }
 \arguments{
-\item{x}{data frame with class atribute and the data that has been taken
+\item{x}{data frame with class attribute and the data that has been taken
 into regionalization}
 }
 \value{
@@ -16,5 +16,5 @@ the accuracy measure of random forest classification
 \description{
 Calculates the accuracy measure based on caret's ranger model for the regionalization done
 by polygon_ds or points_ds. It represents how accurate would random forest model predict
-appropraite community based only on their attributes.
+appropriate community based only on their attributes.
 }

@@ -11,13 +11,16 @@ prepare_points(x, method, n.neigh, plot)
 
 \item{method}{the distance/similarity to calculate}
 
-\item{n.neigh}{at least how many neighbours should be taken into consideration}
+\item{n.neigh}{at least how many neighbors should be taken into
+consideration}
 
-\item{plot}{logical if TRUE a plot showing neighbourhoods is beeing presented}
+\item{plot}{logical if TRUE a plot showing neighborhoods
+is being presented}
 }
 \value{
-neighbourhoods for coummunity finding
+neighborhoods for community finding
 }
 \description{
-Prepares points for regionalization - changes simples features to SpatialPolygonsDataFrame and calculates neighbourhood objects
+Prepares points for regionalization - changes simple features to
+SpatialPolygonsDataFrame and calculates neighborhood objects
 }

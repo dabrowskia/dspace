@@ -15,20 +15,20 @@
 #'   compute the distance.
 #' @param data data to analyze similarity between regions
 #' @param style style can take values “W”, “B”, “C”, “U”, “minmax” and “S”
-#' @param n.neigh number of neighbours considered in the k-nearest neighbour
+#' @param n.neigh number of neighbors considered in the k-nearest neighbor
 #'   algorithm that builds topology
-#' @param disjoint if default settings generate error occuring to disjoint
+#' @param disjoint if default settings generate error occurring to disjoint
 #'   subgraphs it means, that in some places points or polygons are to disjoint
 #'   to generate one connected graph. Use disjoint = T to enforce that one graph
 #'   will be created. This is a slower option.
-#' @param range number of divisions to test the modularity. THe biger the
+#' @param range number of divisions to test the modularity. THe bigger the
 #'   numbers, the longer it will take to calculate plot
 #'
 #' @return A vector of modularity measures for given range of divisions
 #' @export
 #' @examples 
 #' data(realEstate)
-#' realEstate.modularity <- find_no_clusters(realEstate, polygon = FALSE)
+#' realEstate.modularity <- find_no_clusters(realEstate)
 #' plot_modularity(realEstate.modularity)
 #' 
 #' 
