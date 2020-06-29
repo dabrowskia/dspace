@@ -4,25 +4,40 @@
 #' by polygon_ds or points_ds. It represents how accurate would random forest model predict 
 #' appropriate community based only on their attributes.
 #'
-#' @param x data frame with class attribute and the data that has been taken
+#' @param data.to.accu data frame with class attribute and the data that has been taken
 #'   into regionalization
 #'
 #' @return the accuracy measure of random forest classification
 
 
-accuracy_ds <- function(x)
+accuracy_ds <- function(data.to.accu)
 {
-  x$class <- as.factor(x$class)
-  x <- x[stats::complete.cases(x), ]
-  garbage <- utils::capture.output(model.rf <- caret::train(
-    class ~ .,
-    x,
-    method = "ranger",
-    trControl = caret::trainControl(
-      number = 5,
-      method = "cv",
-      verboseIter = TRUE
-    )
-  ))
-  round(max(model.rf$results$Accuracy), 2)
+  data.to.accu$class <- as.factor(data.to.accu$class)
+  data.to.accu <- data.to.accu[stats::complete.cases(data.to.accu), ]
+
+# mlr ---------------------------------------------------------------------
+
+  
+  trainTask <- mlr::makeClassifTask(data = data.to.accu,
+                               target = "class")
+  
+  rf <- mlr::makeLearner("classif.randomForest",
+                    predict.type = "response",
+                    par.vals = list(ntree = 200, mtry = 3))
+  rancontrol <- mlr::makeTuneControlRandom(maxit = 50L)
+  set_cv <- mlr::makeResampleDesc("CV", iters = 5L)
+  rf_param <- ParamHelpers::makeParamSet(
+    ParamHelpers::makeIntegerParam("ntree",lower = 50, upper = 500),
+    ParamHelpers::makeIntegerParam("mtry", lower = 3, upper = 10),
+    ParamHelpers::makeIntegerParam("nodesize", lower = 10, upper = 50)
+  )
+  rf_tune <- mlr::tuneParams(learner = rf,
+                             resampling = set_cv,
+                             task = trainTask,
+                             control = rancontrol,
+                             par.set = rf_param,
+                             measures = mlr::acc,
+                             show.info = F)
+  
+  round(rf_tune$y, 2)
 }

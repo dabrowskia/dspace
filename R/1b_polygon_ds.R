@@ -25,7 +25,11 @@
 #'   to generate one connected graph. Use disjoint = T to enforce that one graph
 #'   will be created. This is a slower option.
 #' @param plot should the neighborhood be plotted
-#' @param explain logical should accuracy be calculated based on randomForest algorithm
+#' @param explain logical. If TRUE a machine learning (randomForest 
+#' using 5 fold cross validation) model is being constructed based 
+#' on the data provided for regionalization. The accuracy of this model
+#' explains how much of the regionalization can be attributed to the data
+#' and how much to the spatial distribution.
 #' @param queen if TRUE, a single shared boundary point meets the contiguity condition,
 #' if FALSE, more than one shared point is required; note that more than one shared boundary
 #' point does not necessarily mean a shared boundary line
@@ -65,18 +69,19 @@ polygon_ds <- function(x,
       style = style
     )
 
-  classes <- part_communities(fg = fg.graph[["fg"]], k = k)
+  classes <- part_communities(fg.graph = fg.graph[["fg"]], k = k)
   if (explain == TRUE)
   {
     data <- names(x)[data]
     data.to.accu <-
-      sf::st_set_geometry(res[["x"]],NULL) %>%
+      sf::st_set_geometry(res[["x"]], NULL) %>%
       dplyr::select(data) %>%
       dplyr::mutate(class = classes)
-    accu <- accuracy_ds(x = data.to.accu)
-    print(paste(accu*100, 'percent of the regionalization process can be 
-                attributed to the data itself while th rest is due to spatial 
-                location (neghborhoods)'))
+    accu <- accuracy_ds(data.to.accu = data.to.accu)
+    print(paste(accu*100, 
+                'percent of the regionalization process', 
+                'can be attributed to the data itself while', 
+                'the rest is due to spatial location (neghborhoods)'))
   }
   classes
 }

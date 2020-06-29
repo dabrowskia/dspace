@@ -17,8 +17,13 @@ prepare_polygons <- function(x, queen,
                              method,
                              disjoint, n.neigh, plot)
 {
+  #Ensuring that polygons are of appropriate type and sf class
+  
+  if (!inherits(x, "sf")) stop("Error: Object is not of class 'sf'")
+  
   geometry <- sf::st_geometry(x)
-  if(!inherits(geometry, "sfc_POLYGON")) stop("object is not of type 'POLYGON'")
+  
+  if(!inherits(geometry, "sfc_POLYGON")) stop("Error: Object is not of type 'POLYGON'")
   
   options(warn=-1)
   coords <- sf::st_centroid(x)$geometry

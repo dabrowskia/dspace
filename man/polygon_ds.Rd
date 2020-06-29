@@ -55,7 +55,11 @@ algorithm that builds topology}
 
 \item{plot}{should the neighborhood be plotted}
 
-\item{explain}{logical should accuracy be calculated based on randomForest algorithm}
+\item{explain}{logical. If TRUE a machine learning (randomForest
+using 5 fold cross validation) model is being constructed based
+on the data provided for regionalization. The accuracy of this model
+explains how much of the regionalization can be attributed to the data
+and how much to the spatial distribution.}
 }
 \value{
 vector of numbers representing regions to which each element belongs to

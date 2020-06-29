@@ -7,15 +7,15 @@
 build_graph(x, data, x.nb, method, style)
 }
 \arguments{
-\item{x}{polygon or point data from wich neighbourhood object will be created}
+\item{x}{polygon or point data from witch neighborhood object will be created}
 
 \item{data}{data frame to build weights between polygons/points}
 
-\item{x.nb}{neighbourhood object created by prepare_points() or prepare_polygons()}
+\item{x.nb}{neighborhood object created by prepare_points() or prepare_polygons()}
 
-\item{method}{method to calculate similarity/distance betweem neighbouring points or polygons}
+\item{method}{method to calculate similarity/distance between neighboring points or polygons}
 
-\item{style}{style of neighbourhood (see `spdep::nb2listw``)}
+\item{style}{style of neighborhood (see `spdep::nb2listw``)}
 }
 \value{
 a list containing community object ("fg") and graph object ("graph")

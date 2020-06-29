@@ -22,8 +22,12 @@
 #' @param style style can take values “W”, “B”, “C”, “U”, “minmax” and “S” (see spdep::nb2listw)
 
 #' @param plot should the neighborhood be plotted
-#' @param explain logical should accuracy be calculated based on randomForest algorithm
-#' 
+#' @param explain logical. If TRUE a machine learning (randomForest 
+#' using 5 fold cross validation) model is being constructed based 
+#' on the data provided for regionalization. The accuracy of this model
+#' explains how much of the regionalization can be attributed to the data
+#' and how much to the spatial distribution.
+#'  
 #' @return vector of numbers representing regions to which each element belongs to
 
 
@@ -44,7 +48,7 @@ points_ds <- function(x,
     plot = plot
   )
   #Building network/graph representation out of neighbor representation
-  fg <- build_graph(
+  fg.graph <- build_graph(
       x = res[["x"]],
       x.nb = res[["x.nb"]],
       data = data,
@@ -52,18 +56,20 @@ points_ds <- function(x,
       style = style
   )
   #Dividing the points based on their graph representation using fast greedy algorithm
-  classes <- part_communities(fg = fg[["fg"]], k = k)
+  classes <- part_communities(fg.graph = fg.graph[["fg"]], k = k)
   #Calculating the accuracy based on random forest algorithm for evaluating suitability of the partition
   if (explain == TRUE)
   {
+    data <- names(x)[data]
     data.to.accu <-
       sf::st_drop_geometry(res[["x"]]) %>%
       dplyr::select(data) %>%
       dplyr::mutate(class = classes)
-    accu <- accuracy_ds(x = data.to.accu)
-    print(paste(paste(accu*100, 'percent of the regionalization process can be 
-                attributed to the data itself while th rest is due to spatial 
-                location (neghborhoods)')))
+    accu <- accuracy_ds(data.to.accu = data.to.accu)
+    print(paste(accu*100, 
+                'percent of the regionalization process', 
+                'can be attributed to the data itself while', 
+                'the rest is due to spatial location (neghborhoods)'))
   }
   classes
 }

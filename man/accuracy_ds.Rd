@@ -4,10 +4,10 @@
 \alias{accuracy_ds}
 \title{accuracy_ds}
 \usage{
-accuracy_ds(x)
+accuracy_ds(data.to.accu)
 }
 \arguments{
-\item{x}{data frame with class attribute and the data that has been taken
+\item{data.to.accu}{data frame with class attribute and the data that has been taken
 into regionalization}
 }
 \value{

@@ -17,11 +17,11 @@ prepare_points <- function(x,
                            plot)
 {
   #Ensuring that points are of appropriate type and sf class
-  if (!inherits(x, "sf")) stop("object is not of class 'sf'")
+  if (!inherits(x, "sf")) stop("Error: Object is not of class 'sf'")
   
   geometry <- sf::st_geometry(x)
   
-  if(!inherits(geometry, "sfc_POINT")) stop("object is not of type 'POINT'")
+  if(!inherits(geometry, "sfc_POINT")) stop("Error: Object is not of type 'POINT'")
   
   #Converting to neighbor representation
   x.knn <- spdep::knearneigh(geometry, k = n.neigh)
