@@ -50,8 +50,8 @@ realEstate$class <- regionalize(realEstate, k = 5, explain = FALSE)
 
 Dspace works with point or polygon datasets to regionalize/divide space into spatially coherent regions/clusters.
 The mechanism behind the algorithm uses network communities for data fixed in geographic 2-dimensional space.
-If the input dataset are points, then based on their position a graph network is being build that can connect points based on their number of nearest neighbors (in future development other means of building network will be implemented).
-If polygons are the input data then graph can be built based on the queen/rook neighborhood of the polygons.
+If the input dataset contains points, then, based on their position in 2-dimensional space, a graph network is being build that connects points based on their number of nearest neighbors `default value n.neigh = 8` (in future development other means of building network will be implemented like dnearestneigh).
+If polygons are the input data then graph can be built based on the queen/rook neighborhood of the polygons (`queen = TRUE`).
 
 When a graph connecting all of the neighboring points/polygons is created a similarity metric is calculated between the neighboring objects. 
 This similarity can be calculated based on different distance metrics: "mahalanobis" or "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski". 

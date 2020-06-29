@@ -1,6 +1,6 @@
 #' regionalize
 #'
-#' Creates a vector of community assignment based on neighbouring data. It
+#' Creates a vector of community assignment based on neighboring data. It
 #' creates a topological structure in which nodes represent points or centroids of polygons
 #' and the edge represents the similarity between nodes.
 #' Communities are created using fast greedy
@@ -8,11 +8,11 @@
 #'
 #' @param x point or polygon shapefile data;
 #' @param k number of clusters;
-#' @param n.neigh number of neighbours considered in the k-nearest neighbour
+#' @param n.neigh number of neighbors considered in the k-nearest neighbour
 #'   algorithm that builds topology
-#' @param data atributes of the spatial data frame to calculate similarity or
+#' @param data attributes of the spatial data frame to calculate similarity or
 #'   distance measure;
-#' @param method Character or function to declare distance method. If method is
+#' @param similarity.measure Character or function to declare distance method. If method is
 #'   character, method must be "mahalanobis" or "euclidean", "maximum",
 #'   "manhattan", "canberra", "binary" or "minkowski". If method is one of
 #'   "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski",
@@ -20,7 +20,8 @@
 #'   If method="mahalanobis", the mahalanobis distance is computed between
 #'   neighbor areas. If method is a function, this function is used to compute
 #'   the distance.
-#' @param style style can take values “W”, “B”, “C”, “U”, “minmax” and “S”
+#' @param style style can take values “W”, “B”, “C”, “U”, “minmax” and “S”. 
+#'   For more details see `?spdep::nb2listw`
 #' @param disjoint if default settings generate error occurring to disjoint
 #'   subgraphs it means, that in some places points or polygons are to disjoint
 #'   to generate one connected graph. Use disjoint = T to enforce that one graph
@@ -49,7 +50,7 @@
 regionalize <- function(x,
                         k = 2,
                         data = -grep(names(x), pattern = '^geom'),
-                        method = "euclidean",
+                        similarity.measure = "euclidean",
                         style = "B",
                         n.neigh = 8,
                         plot = TRUE,
@@ -59,23 +60,23 @@ regionalize <- function(x,
   geometry <- sf::st_geometry(x)
   
   if(inherits(geometry, "sfc_POINT")){
-    points_ds(
+    ds_points(
       x,
       k,
       data,
-      method,
+      similarity.measure,
       style,
       n.neigh,
       plot ,
       explain
     )
   } else if(inherits(geometry, "sfc_POLYGON")){
-    polygon_ds(
+    ds_polygon(
       x,
       k,
       queen ,
       data ,
-      method,
+      similarity.measure,
       style,
       disjoint,
       n.neigh,

@@ -8,7 +8,7 @@ regionalize(
   x,
   k = 2,
   data = -grep(names(x), pattern = "^geom"),
-  method = "euclidean",
+  similarity.measure = "euclidean",
   style = "B",
   n.neigh = 8,
   plot = TRUE,
@@ -22,10 +22,10 @@ regionalize(
 
 \item{k}{number of clusters;}
 
-\item{data}{atributes of the spatial data frame to calculate similarity or
+\item{data}{attributes of the spatial data frame to calculate similarity or
 distance measure;}
 
-\item{method}{Character or function to declare distance method. If method is
+\item{similarity.measure}{Character or function to declare distance method. If method is
 character, method must be "mahalanobis" or "euclidean", "maximum",
 "manhattan", "canberra", "binary" or "minkowski". If method is one of
 "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski",
@@ -34,9 +34,10 @@ If method="mahalanobis", the mahalanobis distance is computed between
 neighbor areas. If method is a function, this function is used to compute
 the distance.}
 
-\item{style}{style can take values “W”, “B”, “C”, “U”, “minmax” and “S”}
+\item{style}{style can take values “W”, “B”, “C”, “U”, “minmax” and “S”.
+For more details see \code{?spdep::nb2listw}}
 
-\item{n.neigh}{number of neighbours considered in the k-nearest neighbour
+\item{n.neigh}{number of neighbors considered in the k-nearest neighbour
 algorithm that builds topology}
 
 \item{plot}{should the neighborhood be plotted}
@@ -60,7 +61,7 @@ and how much to the spatial distribution.}
 vector of numbers representing regions to which each element
 }
 \description{
-Creates a vector of community assignment based on neighbouring data. It
+Creates a vector of community assignment based on neighboring data. It
 creates a topological structure in which nodes represent points or centroids of polygons
 and the edge represents the similarity between nodes.
 Communities are created using fast greedy

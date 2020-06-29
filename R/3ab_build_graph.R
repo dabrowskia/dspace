@@ -5,18 +5,22 @@
 #' @param x polygon or point data from witch neighborhood object will be created
 #' @param data data frame to build weights between polygons/points
 #' @param x.nb neighborhood object created by prepare_points() or prepare_polygons()
-#' @param method method to calculate similarity/distance between neighboring points or polygons
+#' @param similarity.measure method to calculate similarity/distance between neighboring points or polygons
 #' @param style style of neighborhood (see `spdep::nb2listw``)
 #'
 #' @return a list containing community object ("fg") and graph object ("graph")
 #' 
 build_graph <- function(x, data, x.nb,
-                        method, style)
+                        similarity.measure, style)
 {
   
   #Calculating similarity between the nodes
-  cost <- spdep::nbcosts(method = method, x.nb, sf::st_drop_geometry(x[, data]))
-  nb.w <- spdep::nb2listw(x.nb, cost, style = style)
+  cost <- spdep::nbcosts(method = similarity.measure, 
+                         x.nb, 
+                         sf::st_drop_geometry(x[, data]))
+  nb.w <- spdep::nb2listw(x.nb, 
+                          cost, 
+                          style = style)
   mat <- spdep::listw2mat(nb.w)
   colnames(mat) <- rownames(mat)
   value <- NULL

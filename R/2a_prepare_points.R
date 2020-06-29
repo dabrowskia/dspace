@@ -1,18 +1,16 @@
 #' prepare_points
 #'
 #' Prepares points for regionalization - changes simple features to 
-#' SpatialPolygonsDataFrame and calculates neighborhood objects
+#' SpatialPointsDataFrame and calculates neighborhood objects
 #'
 #' @param x point object of class sf
-#' @param method the distance/similarity to calculate
-#' @param n.neigh at least how many neighbors should be taken into 
-#' consideration
+#' @param n.neigh number of nearest neighbors that should be taken into 
+#' consideration for building graph
 #' @param plot logical if TRUE a plot showing neighborhoods 
 #' is being presented
 #' @return neighborhoods for community finding
 #'
 prepare_points <- function(x,
-                           method,
                            n.neigh,
                            plot)
 {
@@ -23,7 +21,8 @@ prepare_points <- function(x,
   
   if(!inherits(geometry, "sfc_POINT")) stop("Error: Object is not of type 'POINT'")
   
-  #Converting to neighbor representation
+  #Converting to neighbor representation. 
+  #For future development: more possibilities to build network (dnearneigh,)
   x.knn <- spdep::knearneigh(geometry, k = n.neigh)
   x.nb <- spdep::knn2nb(x.knn)
   gn <- spdep::gabrielneigh(geometry, nnmult = 3)

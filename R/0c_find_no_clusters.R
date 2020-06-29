@@ -5,7 +5,8 @@
 #' @param x spatial data for regionalization
 #' @param queen  if data is polygon and without disjoint polygons, should the
 #'   neighborhood be treated by queen topology or rook topology
-#' @param method Character or function to declare distance method. If method
+#' @param similarity.measure Character or function to declare distance method 
+#'   transformed into similarity measure. If method
 #'   is character, method must be "mahalanobis" or "euclidean", "maximum",
 #'   "manhattan", "canberra", "binary" or "minkowisk". If method is one of
 #'   "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski",
@@ -34,7 +35,7 @@
 #' 
 find_no_clusters <- function(x,
                              queen = TRUE,
-                             method = "euclidean",
+                             similarity.measure = "euclidean",
                              data = -grep(names(x), pattern = '^geom'),
                              style = "B",
                              n.neigh = 8,
@@ -48,7 +49,6 @@ find_no_clusters <- function(x,
       res <- prepare_polygons(
         x = x,
         queen = queen,
-        method = method,
         disjoint = disjoint,
         n.neigh = n.neigh,
         plot = FALSE
@@ -56,7 +56,6 @@ find_no_clusters <- function(x,
     } else {
       res <- prepare_points(
         x = x,
-        method = method,
         n.neigh = n.neigh,
         plot = FALSE
       )
@@ -68,7 +67,7 @@ find_no_clusters <- function(x,
         x = res[["x"]],
         x.nb = res[["x.nb"]],
         data = data,
-        method = method,
+        similarity.measure = similarity.measure,
         style = style
       )
     graph <- fg[["graph"]]
