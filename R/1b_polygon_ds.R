@@ -74,13 +74,14 @@ polygon_ds <- function(x,
   {
     data <- names(x)[data]
     data.to.accu <-
-      sf::st_set_geometry(res[["x"]],NULL) %>%
+      sf::st_set_geometry(res[["x"]], NULL) %>%
       dplyr::select(data) %>%
       dplyr::mutate(class = classes)
-    accu <- accuracy_ds(x = data.to.accu)
-    print(paste(accu*100, 'percent of the regionalization process can be 
-                attributed to the data itself while th rest is due to spatial 
-                location (neghborhoods)'))
+    accu <- accuracy_ds(data.to.accu = data.to.accu)
+    print(paste(accu*100, 
+                'percent of the regionalization process', 
+                'can be attributed to the data itself while', 
+                'the rest is due to spatial location (neghborhoods)'))
   }
   classes
 }
