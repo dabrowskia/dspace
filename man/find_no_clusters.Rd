@@ -7,7 +7,7 @@
 find_no_clusters(
   x,
   queen = TRUE,
-  method = "euclidean",
+  similarity.measure = "euclidean",
   data = -grep(names(x), pattern = "^geom"),
   style = "B",
   n.neigh = 8,
@@ -21,7 +21,8 @@ find_no_clusters(
 \item{queen}{if data is polygon and without disjoint polygons, should the
 neighborhood be treated by queen topology or rook topology}
 
-\item{method}{Character or function to declare distance method. If method
+\item{similarity.measure}{Character or function to declare distance method
+transformed into similarity measure. If method
 is character, method must be "mahalanobis" or "euclidean", "maximum",
 "manhattan", "canberra", "binary" or "minkowisk". If method is one of
 "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski",

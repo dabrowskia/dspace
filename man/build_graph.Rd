@@ -4,7 +4,7 @@
 \alias{build_graph}
 \title{build_graph}
 \usage{
-build_graph(x, data, x.nb, method, style)
+build_graph(x, data, x.nb, similarity.measure, style)
 }
 \arguments{
 \item{x}{polygon or point data from witch neighborhood object will be created}
@@ -13,7 +13,7 @@ build_graph(x, data, x.nb, method, style)
 
 \item{x.nb}{neighborhood object created by prepare_points() or prepare_polygons()}
 
-\item{method}{method to calculate similarity/distance between neighboring points or polygons}
+\item{similarity.measure}{method to calculate similarity/distance between neighboring points or polygons}
 
 \item{style}{style of neighborhood (see `spdep::nb2listw``)}
 }

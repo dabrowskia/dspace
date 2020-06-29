@@ -4,15 +4,13 @@
 \alias{prepare_points}
 \title{prepare_points}
 \usage{
-prepare_points(x, method, n.neigh, plot)
+prepare_points(x, n.neigh, plot)
 }
 \arguments{
 \item{x}{point object of class sf}
 
-\item{method}{the distance/similarity to calculate}
-
-\item{n.neigh}{at least how many neighbors should be taken into
-consideration}
+\item{n.neigh}{number of nearest neighbors that should be taken into
+consideration for building graph}
 
 \item{plot}{logical if TRUE a plot showing neighborhoods
 is being presented}
@@ -22,5 +20,5 @@ neighborhoods for community finding
 }
 \description{
 Prepares points for regionalization - changes simple features to
-SpatialPolygonsDataFrame and calculates neighborhood objects
+SpatialPointsDataFrame and calculates neighborhood objects
 }

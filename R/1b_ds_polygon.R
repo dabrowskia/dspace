@@ -1,4 +1,4 @@
-#' polygon_ds
+#' ds_polygon
 #'  
 #' Creates a vector of community assignment based on neighboring polygons. It
 #' creates a topological structure in which nodes represent polygons and the edge
@@ -11,7 +11,8 @@
 #'   algorithm that builds topology
 #' @param data attributes of the spatial data frame to calculate similarity or
 #'   distance measure;
-#' @param method Character or function to declare distance method. If method is
+#' @param similarity.measure Character or function to declare distance 
+#'   method transformed into similarity measure. If method is
 #'   character, method must be "mahalanobis" or "euclidean", "maximum",
 #'   "manhattan", "canberra", "binary" or "minkowski". If method is one of
 #'   "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski",
@@ -38,11 +39,11 @@
 
 
 
-polygon_ds <- function(x,
+ds_polygon <- function(x,
                        k = 2,
                        queen = TRUE,
                        data = -grep(names(x), pattern = '^geom'),
-                       method = "euclidean",
+                       similarity.measure = "euclidean",
                        style = "B",
                        disjoint = FALSE,
                        n.neigh = 8,
@@ -54,7 +55,6 @@ polygon_ds <- function(x,
   res <- prepare_polygons(
     x = x,
     queen = queen,
-    method = method,
     disjoint = disjoint,
     n.neigh = n.neigh,
     plot = plot
@@ -65,7 +65,7 @@ polygon_ds <- function(x,
       x = res[["x"]],
       x.nb = res[["x.nb"]],
       data = data,
-      method = method,
+      similarity.measure = similarity.measure,
       style = style
     )
 
@@ -77,7 +77,7 @@ polygon_ds <- function(x,
       sf::st_set_geometry(res[["x"]], NULL) %>%
       dplyr::select(data) %>%
       dplyr::mutate(class = classes)
-    accu <- accuracy_ds(data.to.accu = data.to.accu)
+    accu <- ds_accuracy(data.to.accu = data.to.accu)
     print(paste(accu*100, 
                 'percent of the regionalization process', 
                 'can be attributed to the data itself while', 

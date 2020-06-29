@@ -4,19 +4,17 @@
 \alias{prepare_polygons}
 \title{prepare_polygon}
 \usage{
-prepare_polygons(x, queen, method, disjoint, n.neigh, plot)
+prepare_polygons(x, queen, disjoint, n.neigh, plot)
 }
 \arguments{
 \item{x}{point object}
 
 \item{queen}{logical should the queen or the rook neighborhood be calculated}
 
-\item{method}{the distance/similarity to calculate}
-
 \item{disjoint}{logical if polygons are not continuous}
 
-\item{n.neigh}{at least how many neighbors should be taken
-into rationalization if disjoint==TRUE}
+\item{n.neigh}{number of nearest neighbors that should be taken into
+consideration for building graph if disjoint==TRUE}
 
 \item{plot}{logical if TRUE a plot showing neighborhoods is being presented}
 }
@@ -24,7 +22,6 @@ into rationalization if disjoint==TRUE}
 neighborhoods for community finding
 }
 \description{
-Prepares polygons for regionalization - changes simple features to
-SpatialPolygonsDataFrame and calculates
+Prepares polygons for regionalization - calculates
 neighborhood objects
 }

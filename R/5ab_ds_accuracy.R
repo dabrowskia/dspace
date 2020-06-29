@@ -1,7 +1,7 @@
-#' accuracy_ds
+#' ds_accuracy
 #'
 #' Calculates the accuracy measure based on caret's ranger model for the regionalization done 
-#' by polygon_ds or points_ds. It represents how accurate would random forest model predict 
+#' by ds_polygon or ds_points. It represents how accurate would random forest model predict 
 #' appropriate community based only on their attributes.
 #'
 #' @param data.to.accu data frame with class attribute and the data that has been taken
@@ -10,7 +10,7 @@
 #' @return the accuracy measure of random forest classification
 
 
-accuracy_ds <- function(data.to.accu)
+ds_accuracy <- function(data.to.accu)
 {
   data.to.accu$class <- as.factor(data.to.accu$class)
   data.to.accu <- data.to.accu[stats::complete.cases(data.to.accu), ]
